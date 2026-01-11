@@ -1,0 +1,14 @@
+.global {
+    background-color: #505050;
+}
+
+.body {
+    color: #ffffff;
+    margin: 5px;
+}
+
+.body-border {
+    background-color: #000000;
+    border-style: groove;
+    border-width: 5px
+}
