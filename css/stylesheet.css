@@ -5,10 +5,43 @@
 .body {
     color: #ffffff;
     margin: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.body-input {
+    color: #ffffff;
+    margin: 5px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .body-border {
     background-color: #000000;
     border-style: groove;
-    border-width: 5px
+    border-width: 5px;
+    height: 90vh;
+    overflow-y: auto;
+}
+
+.inline-input {
+    display: inline-block;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 5px;
+    border-radius: 0;
+    width: 80%;
+    margin-top: auto;
+}
+.inline-input::placeholder {
+    color: #aaaaaa;
+    font-family:'Courier New', Courier, monospace;
+}
+
+#help-text {
+    color: #ffffff;
+    display: none;
+}
+
+a {
+    color: aqua;
 }
