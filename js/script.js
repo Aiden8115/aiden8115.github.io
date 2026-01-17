@@ -1,5 +1,4 @@
 const inputBox = document.getElementById('input-box');
-const helpText = document.getElementById('output-area');
 
 function scrollToBottom() {
     const scrollContainer = document.getElementById('body-border');
