@@ -18,9 +18,10 @@ function checkInput() {
             if (body) {
                 const helpText = document.createElement('p');
                 helpText.innerHTML = 'Commands: <br>\
-                main ------- the main page<br>\
-                coding ----- Aiden\'s coding exp<br>\
-                studying --- Aiden\'s studying exp<br>';
+                main -------------- the main page<br>\
+                coding ------------ Aiden\'s coding exp<br>\
+                studying ---------- Aiden\'s studying exp<br>\
+                fastgithub-win ---- Download the fastgithub file';
                 helpText.style.color = '#ffffff';
                 body.append(helpText);
                 scrollToBottom();
@@ -36,7 +37,20 @@ function checkInput() {
     if (inputValue === 'studying') {
         window.location.href = 'studying.html'
     }
+    if (inputValue === 'fastgithub-win') {
+        downloadByUrl('download/fastgithub-win-x64.zip', 'fastgithub-win-x64.zip');
+    }
     inputBox.value = '';
+}
+
+function downloadByUrl(url, name) {
+    const a = document.createElement('a');
+    a.href = url;
+    if (name) a.download = name;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
 
 inputBox.addEventListener('keydown', function(e) {
