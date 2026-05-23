@@ -18,10 +18,10 @@ function checkInput() {
             if (body) {
                 const helpText = document.createElement('p');
                 helpText.innerHTML = 'Commands: <br>\
-                main -------------- the main page<br>\
-                coding ------------ Aiden\'s coding exp<br>\
-                studying ---------- Aiden\'s studying exp<br>\
-                fastgithub-win ---- Download the fastgithub file';
+                main -------------- 主页<br>\
+                coding ------------ 我的编程经历<br>\
+                studying ---------- 我的学习经历<br>\
+                fastgithub-win ---- 下载FastGitHub';
                 helpText.style.color = '#ffffff';
                 body.append(helpText);
                 scrollToBottom();
