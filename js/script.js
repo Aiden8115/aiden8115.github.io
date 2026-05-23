@@ -21,7 +21,8 @@ function checkInput() {
                 main -------------- 主页<br>\
                 coding ------------ 我的编程经历<br>\
                 studying ---------- 我的学习经历<br>\
-                fastgithub-win ---- 下载FastGitHub';
+                fastgithub-win ---- 下载FastGitHub<br>\
+                dl ---------------- 下载地理演讲PPT';
                 helpText.style.color = '#ffffff';
                 body.append(helpText);
                 scrollToBottom();
@@ -39,6 +40,9 @@ function checkInput() {
     }
     if (inputValue === 'fastgithub-win') {
         downloadByUrl('download/fastgithub-win-x64.zip', 'fastgithub-win-x64.zip');
+    }
+    if (inputValue === 'dl') {
+        downloadByUrl('download/dl.pptx', 'dl.pptx');
     }
     inputBox.value = '';
 }
