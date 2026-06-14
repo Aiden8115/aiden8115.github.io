@@ -1,0 +1,153 @@
+{
+  "id": "j60o108bca1c",
+  "version": "0.1",
+  "items": [
+    {
+      "name": "<hir>杀</hir>",
+      "type": "button",
+      "for": "action",
+      "paras": "",
+      "content": "kill @npc",
+      "on": {
+        "j60o108bca1c": 1,
+        "utqb10924307": 1,
+        "fv2w10af6d27": 1,
+        "0nzd10f29680": 1,
+        "azl711028b0d": 1
+      }
+    },
+    {
+      "name": "<hig>捡</hig>",
+      "type": "button",
+      "for": "action",
+      "paras": "",
+      "content": "get all from @item(尸体)",
+      "on": {
+        "j60o108bca1c": 1,
+        "utqb10924307": 1,
+        "fv2w10af6d27": 1,
+        "0nzd10f29680": 1,
+        "azl711028b0d": 1
+      }
+    },
+    {
+      "name": "<hig>返回武庙</hig>",
+      "type": "button",
+      "for": "map",
+      "paras": "name(扬州)",
+      "content": "jh fam 0 start;go north;go north;go west",
+      "check": [
+        null
+      ],
+      "on": {
+        "utqb10924307": 1,
+        "fv2w10af6d27": 1,
+        "0nzd10f29680": 1,
+        "j60o108bca1c": 1,
+        "azl711028b0d": 1
+      }
+    },
+    {
+      "name": "练习到指定等级",
+      "type": "button",
+      "for": "skill",
+      "paras": "",
+      "content": "lianxi @id @input",
+      "on": {
+        "j60o108bca1c": 1,
+        "utqb10924307": 1,
+        "fv2w10af6d27": 1,
+        "0nzd10f29680": 1,
+        "azl711028b0d": 1
+      }
+    },
+    {
+      "name": "学习到指定等级",
+      "type": "button",
+      "for": "mskill",
+      "paras": "",
+      "content": "xue @input @id from @master",
+      "on": {
+        "j60o108bca1c": 1,
+        "utqb10924307": 1,
+        "fv2w10af6d27": 1,
+        "0nzd10f29680": 1,
+        "azl711028b0d": 1
+      }
+    },
+    {
+      "name": "<div id=\"qianneng-calculator\"style=\"display: block; width: auto; color: #C0C0C0\"><div style=\"display: flex; align-items: center; flex-wrap: wrap;\"><div style=\"display: flex; align-items: center; margin: 8px;\"><label style=\"margin-right: 5px;\">起始等级：<input type=\"number\"id=\"qianneng-start-level\"min=\"0\"aria-label=\"起始等级\"style=\"width: 60px; padding: 4px; border: 1px solid; border-radius: 3px; background-color: transparent; color: inherit;\"/></label></div><div style=\"display: flex; align-items: center; margin: 8px;\"><label style=\"margin-right: 5px;\">目标等级：<input type=\"number\"id=\"qianneng-target-level\"min=\"0\"aria-label=\"目标等级\"style=\"width: 60px; padding: 4px; border: 1px solid; border-radius: 3px; background-color: transparent; color: inherit;\"/></label></div><div style=\"display: flex; align-items: center; margin: 8px 5px 8px auto;\">所需潜能：<span id=\"qianneng-required\"role=\"status\"aria-live=\"polite\"style=\"min-width: 100px; font-weight: bold; min-width: 4em; text-align: center;\">0</span></div><div class=\"item-commands\"style=\"margin: 8px 5px\"><span id=\"qianneng-start-btn\">练习到目标等级</span></div></div></div><script>(function(){const container=document.getElementById(\"qianneng-calculator\");const startLevelInput=document.getElementById(\"qianneng-start-level\");const targetLevelInput=document.getElementById(\"qianneng-target-level\");const outputElement=document.getElementById(\"qianneng-required\");const startBtn=document.getElementById(\"qianneng-start-btn\");if(!container){console.log(\"[Qianneng Calculator] 无法获取扩展元素\");return}function fatalError(techMessage,userMessage=\"环境不兼容\"){console.error(\"[Qianneng Calculator] 错误:\",techMessage);container.innerHTML=`<hir>「潜能计算器」无法运行：${userMessage}</hir>`}try{if(document.querySelectorAll('div[id=\"qianneng-calculator\"]').length>1){fatalError(\"扩展元素出现多次\",\"插件重复加载\");return}const parent=container.parentElement;if(parent.classList.contains(\"title\")&&parent.parentElement.classList.contains(\"setting-item\")&&parent.parentElement.parentElement.classList.contains(\"extend-list\")){container.style.display=\"inline-block\";container.innerHTML=`<hig>「潜能计算器 v2026012」扩展已加载，请确认扩展启动，并打开技能页面查看</hig>`;return}const itemCommands=parent.parentElement;if(!itemCommands||!itemCommands.classList.contains(\"item-commands\")){fatalError(\"无法获取 item-command 元素\");return}itemCommands.replaceChild(container,parent);const skillElm=itemCommands.previousElementSibling;const levelInfos=[{class:\"grade0\",name:\"白色\",x:2,y:5},{class:\"grade1\",name:\"绿色\",x:2,y:10},{class:\"grade2\",name:\"蓝色\",x:7,y:15},{class:\"grade3\",name:\"黄色\",x:10,y:20},{class:\"grade4\",name:\"紫色\",x:12,y:25},{class:\"grade5\",name:\"橙色\",x:15,y:30},{class:\"grade6\",name:\"红色\",x:20,y:35}];const curLevelInfo=(function(){for(const levelInfoItem of levelInfos){if(skillElm.classList.contains(levelInfoItem.class)){return levelInfoItem}}return null})();if(!curLevelInfo){fatalError(\"无法识别技能颜色\",\"无法读取技能品质\");return}const skillLevelElm=skillElm.querySelector(\"span.skill-level\");if(!skillLevelElm){fatalError(\"找不到技能等级元素\");return}const skillLevel=parseInt(skillLevelElm.textContent.match(/\\d+/)[0]);if(isNaN(skillLevel)){fatalError(\"无法获取技能等级\");return}const dialogHeader=itemCommands.parentElement.parentElement.previousElementSibling;if(!dialogHeader||!dialogHeader.classList.contains(\"dialog-header\")){fatalError(\"找不到技能页页眉元素\");return}const dialogTitle=dialogHeader.querySelector(\".dialog-title\");if(!dialogTitle){fatalError(\"找不到技能页标题元素\");return}const match=dialogTitle.textContent.match(/等级上限\\s*(\\d+)/);let levelLimit=0;if(match){levelLimit=parseInt(match[1],10)}else{fatalError(\"技能等级格式不合法\");return}const skillID=(function(){for(const son of itemCommands.children){if(son.tagName===\"SPAN\"&&son.innerHTML===\"练习\"){const match=son.getAttribute(\"cmd\").match(/^lianxi\\s+([a-z0-9]+)$/);if(match){return match[1]}}}return null})();if(!skillID){throw new Error(\"无法获取技能ID\");}startLevelInput.value=skillLevel;targetLevelInput.value=Math.min(skillLevel+100,levelLimit);startLevelInput.addEventListener(\"input\",calculateQianneng);targetLevelInput.addEventListener(\"input\",calculateQianneng);calculateQianneng();function calculateQianneng(){const qiannengStartLevel=parseInt(startLevelInput.value);const qiannengTargetLevel=parseInt(targetLevelInput.value);startLevelInput.style.color=\"#C0C0C0\";targetLevelInput.style.color=\"#C0C0C0\";outputElement.style.color=\"#C0C0C0\";let invalid=false;if(qiannengStartLevel<0||isNaN(qiannengStartLevel)){startLevelInput.style.color=\"#FF4500\";invalid=true}if(qiannengTargetLevel<0||isNaN(qiannengTargetLevel)){targetLevelInput.style.color=\"#FF4500\";invalid=true}if(qiannengTargetLevel<qiannengStartLevel){startLevelInput.style.color=\"#FF4500\";targetLevelInput.style.color=\"#FF4500\";invalid=true}if(invalid){outputElement.style.color=\"#505050\";outputElement.textContent=\"-\";startBtn.removeAttribute(\"cmd\");return}if(qiannengStartLevel>levelLimit){startLevelInput.style.color=\"#FFFF00\"}if(qiannengTargetLevel>levelLimit){targetLevelInput.style.color=\"#FFFF00\"}outputElement.style.color=\"#C0C0C0\";startBtn.setAttribute(\"cmd\",\"#lianxi \"+skillID+\" \"+qiannengTargetLevel);const d=qiannengStartLevel;const e=qiannengTargetLevel;const x=curLevelInfo.x;const y=curLevelInfo.y;const result=(e-d)*x+y*((e*(e-1)/2)-(d*(d-1)/2));outputElement.textContent=Math.round(result)}}catch(error){fatalError(error.message||error,\"程序发生异常\")}})();</script>",
+      "type": "button",
+      "for": "skill",
+      "paras": "",
+      "content": "msg 一个潜能计算器",
+      "on": {
+        "j60o108bca1c": 1,
+        "0nzd10f29680": 1,
+        "utqb10924307": 1,
+        "azl711028b0d": 1
+      }
+    },
+    {
+      "name": "<hig>装备</hig><hio>真武剑</hio>",
+      "type": "button",
+      "for": "action",
+      "paras": "",
+      "content": "eq @id(真武剑)",
+      "on": {
+        "j60o108bca1c": 1
+      }
+    },
+    {
+      "name": "<hic>清</hic>",
+      "type": "button",
+      "for": "action",
+      "paras": "",
+      "content": "sell all",
+      "on": {
+        "j60o108bca1c": 1,
+        "0nzd10f29680": 1,
+        "utqb10924307": 1,
+        "azl711028b0d": 1
+      }
+    },
+    {
+      "name": "衙门",
+      "type": "button",
+      "for": "map",
+      "paras": "",
+      "content": "jh fam 0 start;go west;go north;go north",
+      "on": {
+        "j60o108bca1c": 1
+      }
+    },
+    {
+      "name": "<him>精炼++</him>",
+      "type": "button",
+      "for": "pack",
+      "paras": "",
+      "content": "jinglian @id ok",
+      "on": {
+        "j60o108bca1c": 1
+      }
+    },
+    {
+      "name": "鄙视",
+      "type": "button",
+      "for": "item",
+      "paras": "",
+      "content": "fight @id;perform sword.chan",
+      "on": {
+        "j60o108bca1c": 1
+      }
+    },
+    {
+      "name": "chkskill",
+      "type": "button",
+      "for": "action",
+      "paras": "",
+      "content": "checkskill yihuajiemu 2000",
+      "on": {}
+    }
+  ]
+}

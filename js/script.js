@@ -44,6 +44,9 @@ function checkInput() {
     if (inputValue === 'dl') {
         downloadByUrl('download/dl.pptx', 'dl.pptx');
     }
+    if (inputValue === 'ws') {
+        downloadByUrl('download/ws.json', 'ws.json');
+    }
     inputBox.value = '';
 }
 
