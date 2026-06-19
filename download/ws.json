@@ -93,7 +93,7 @@
       "type": "button",
       "for": "action",
       "paras": "",
-      "content": "eq @id(真武剑)",
+      "content": "use etqa115abc1a",
       "on": {
         "j60o108bca1c": 1
       }
@@ -132,11 +132,11 @@
       }
     },
     {
-      "name": "鄙视",
-      "type": "button",
-      "for": "item",
-      "paras": "",
-      "content": "fight @id;perform sword.chan",
+      "name": "比试自动出缠",
+      "type": "trigger",
+      "for": "message",
+      "paras": "说道：既然.*赐教，.*只好奉陪",
+      "content": "perform sword.chan",
       "on": {
         "j60o108bca1c": 1
       }
@@ -146,8 +146,10 @@
       "type": "button",
       "for": "action",
       "paras": "",
-      "content": "checkskill yihuajiemu 2000",
-      "on": {}
+      "content": "checkskill songshanjianfa 2000",
+      "on": {
+        "j60o108bca1c": 1
+      }
     }
   ]
 }
