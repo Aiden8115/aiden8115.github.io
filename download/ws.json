@@ -13,7 +13,8 @@
         "utqb10924307": 1,
         "fv2w10af6d27": 1,
         "0nzd10f29680": 1,
-        "azl711028b0d": 1
+        "azl711028b0d": 1,
+        "0ruj1072a3d6": 1
       }
     },
     {
@@ -27,7 +28,8 @@
         "utqb10924307": 1,
         "fv2w10af6d27": 1,
         "0nzd10f29680": 1,
-        "azl711028b0d": 1
+        "azl711028b0d": 1,
+        "0ruj1072a3d6": 1
       }
     },
     {
@@ -44,7 +46,8 @@
         "fv2w10af6d27": 1,
         "0nzd10f29680": 1,
         "j60o108bca1c": 1,
-        "azl711028b0d": 1
+        "azl711028b0d": 1,
+        "0ruj1072a3d6": 1
       }
     },
     {
@@ -58,7 +61,8 @@
         "utqb10924307": 1,
         "fv2w10af6d27": 1,
         "0nzd10f29680": 1,
-        "azl711028b0d": 1
+        "azl711028b0d": 1,
+        "0ruj1072a3d6": 1
       }
     },
     {
@@ -72,7 +76,8 @@
         "utqb10924307": 1,
         "fv2w10af6d27": 1,
         "0nzd10f29680": 1,
-        "azl711028b0d": 1
+        "azl711028b0d": 1,
+        "0ruj1072a3d6": 1
       }
     },
     {
@@ -85,17 +90,20 @@
         "j60o108bca1c": 1,
         "0nzd10f29680": 1,
         "utqb10924307": 1,
-        "azl711028b0d": 1
+        "azl711028b0d": 1,
+        "0ruj1072a3d6": 1
       }
     },
     {
-      "name": "<hig>装备</hig><hio>真武剑</hio>",
+      "name": "<hig>装备</hig><hio>君子剑</hio>",
       "type": "button",
       "for": "action",
       "paras": "",
-      "content": "use etqa115abc1a",
+      "content": "use s2t11168ac64",
       "on": {
-        "j60o108bca1c": 1
+        "j60o108bca1c": 1,
+        "0ruj1072a3d6": 1,
+        "utqb10924307": 1
       }
     },
     {
@@ -108,7 +116,8 @@
         "j60o108bca1c": 1,
         "0nzd10f29680": 1,
         "utqb10924307": 1,
-        "azl711028b0d": 1
+        "azl711028b0d": 1,
+        "0ruj1072a3d6": 1
       }
     },
     {
@@ -118,7 +127,9 @@
       "paras": "",
       "content": "jh fam 0 start;go west;go north;go north",
       "on": {
-        "j60o108bca1c": 1
+        "j60o108bca1c": 1,
+        "0ruj1072a3d6": 1,
+        "utqb10924307": 1
       }
     },
     {
@@ -128,17 +139,31 @@
       "paras": "",
       "content": "jinglian @id ok",
       "on": {
-        "j60o108bca1c": 1
+        "j60o108bca1c": 1,
+        "0ruj1072a3d6": 1,
+        "utqb10924307": 1
       }
     },
     {
-      "name": "比试自动出缠",
+      "name": "比试自动出招（0号位）",
       "type": "trigger",
       "for": "message",
       "paras": "说道：既然.*赐教，.*只好奉陪",
-      "content": "perform sword.chan",
+      "content": "#pfm 0",
       "on": {
-        "j60o108bca1c": 1
+        "j60o108bca1c": 1,
+        "0ruj1072a3d6": 1
+      }
+    },
+    {
+      "name": "比试自动出招（1号位）",
+      "type": "trigger",
+      "for": "message",
+      "paras": "说道：既然.*赐教，.*只好奉陪",
+      "content": "#pfm 1",
+      "on": {
+        "j60o108bca1c": 1,
+        "0ruj1072a3d6": 1
       }
     },
     {
@@ -146,9 +171,31 @@
       "type": "button",
       "for": "action",
       "paras": "",
-      "content": "checkskill songshanjianfa 2000",
+      "content": "checkskill douzhuanxingyi 2200",
       "on": {
-        "j60o108bca1c": 1
+        "j60o108bca1c": 1,
+        "0ruj1072a3d6": 1
+      }
+    },
+    {
+      "name": "抓段誉",
+      "type": "button",
+      "for": "action",
+      "paras": "",
+      "content": "zhua c8rl1167780f",
+      "on": {
+        "j60o108bca1c": 1,
+        "0ruj1072a3d6": 1
+      }
+    }, 
+    {
+      "name": "比试结束抓段誉",
+      "type": "trigger",
+      "for": "message",
+      "paras": "^.*(?:哈哈大笑，愉快地说道：承让了！|双手一拱，笑著说道：知道我的厉害了吧！|哈哈大笑，双手一拱，笑著说道：承让！|胜了这招，向后跃开三尺，笑道：承让！|脸色微变，说道：佩服，佩服！|向后退了几步，说道：这场比试算我输了，佩服，佩服！|向后一纵，躬身做揖说道：阁下武艺不凡，果然高明！).*$",
+      "content": "#msg 抓段誉了;zhua @npc(段誉)",
+      "on": {
+        "0ruj1072a3d6": 1
       }
     }
   ]
