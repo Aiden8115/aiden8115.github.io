@@ -1,26 +1,74 @@
 <!DOCTYPE html>
-<html lang="zh" class="global">
+<html lang="zh">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Aiden8115</title>
-        <link rel="icon" href="favicon-32x32.png" type="text/html">
+        <link rel="icon" href="aiden8115_skin64.png" type="image/png">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     </head>
     <body>
-        <div class="body-border" id="body-border">
-            <div class="body">
-                <h1>Aiden</h1>
-                <p>我是Aiden。这是我的GitHub Pages页面。(<a href="https://github.io">github.io</a>)</p>
-                <p>我会Java和Python，我有一些Java项目。</p>
-                <p>请输入 'help' 来查看帮助。</p>
-            </div>
-            <div class="body" id="output-area"></div>
-            <div class="body-input">
-                <p><label for="input-box"></label><input type="text" class="inline-input" id="input-box" placeholder="input command..."></p>
+        <!-- 独立特效层：背景几何装饰 -->
+        <svg class="bg-deco" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <!-- 斜线条纹 -->
+            <g class="d1">
+                <line x1="0" y1="120"  x2="1600" y2="120"  />
+                <line x1="0" y1="260"  x2="1600" y2="260"  />
+                <line x1="0" y1="420"  x2="1600" y2="420"  />
+                <line x1="0" y1="600"  x2="1600" y2="600"  />
+                <line x1="0" y1="780"  x2="1600" y2="780"  />
+            </g>
+            <g class="d2" transform="translate(200,0)">
+                <line x1="0" y1="180"  x2="1600" y2="180"  />
+                <line x1="0" y1="330"  x2="1600" y2="330"  />
+                <line x1="0" y1="500"  x2="1600" y2="500"  />
+                <line x1="0" y1="680"  x2="1600" y2="680"  />
+                <line x1="0" y1="840"  x2="1600" y2="840"  />
+            </g>
+            <!-- 漂浮方块 -->
+            <rect class="d3" x="120"  y="160"  width="60" height="60" rx="10" fill="none" stroke="rgba(0,229,255,0.18)" stroke-width="1.5"/>
+            <rect class="d4" x="1420" y="620"  width="80" height="80" rx="14" fill="none" stroke="rgba(47,107,255,0.22)" stroke-width="1.5"/>
+            <rect class="d1" x="1380" y="180"  width="36" height="36" rx="8"  fill="none" stroke="rgba(124,58,237,0.20)" stroke-width="1.5"/>
+            <rect class="d2" x="180"  y="680"  width="44" height="44" rx="10" fill="none" stroke="rgba(0,229,255,0.16)" stroke-width="1.5"/>
+            <!-- 小十字 -->
+            <g class="d3" stroke="rgba(0,229,255,0.22)" stroke-width="1.2">
+                <line x1="340"  y1="220" x2="360"  y2="220"/>
+                <line x1="350"  y1="210" x2="350"  y2="230"/>
+            </g>
+            <g class="d4" stroke="rgba(47,107,255,0.22)" stroke-width="1.2">
+                <line x1="1280" y1="460" x2="1300" y2="460"/>
+                <line x1="1290" y1="450" x2="1290" y2="470"/>
+            </g>
+        </svg>
+
+        <!-- 独立特效层：光标光晕 -->
+        <div class="cursor-glow" id="cursor-glow"></div>
+
+        <!-- 主内容面板 -->
+        <div class="panel">
+            <h1 class="title">Aiden</h1>
+            <p class="sub">我是 Aiden。这是我的 GitHub Pages 页面。(<a href="https://github.io">github.io</a>)</p>
+            <p class="sub">我会 Java 和 Python，我有一些 Java 项目。</p>
+            <div class="btn-row">
+                <button class="btn" id="btn-fastgithub">
+                    <span class="btn-label">下载 FastGitHub</span>
+                    <svg class="btn-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
+                <button class="btn" id="btn-mcdownloader">
+                    <span class="btn-label">下载 MCDownloader</span>
+                    <svg class="btn-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
+                <button class="btn" id="btn-geo-ppt">
+                    <span class="btn-label">下载地理PPT</span>
+                    <svg class="btn-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
             </div>
         </div>
+
+        <!-- Toast 层 -->
+        <div class="toast-stack" id="toast-stack"></div>
+
         <script src="js/script.js"></script>
     </body>
 </html>
