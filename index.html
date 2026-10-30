@@ -69,6 +69,33 @@
         <!-- Toast 层 -->
         <div class="toast-stack" id="toast-stack"></div>
 
+        <!-- MCDownloader 密码弹窗 -->
+        <div class="pw-modal" id="pw-modal" aria-hidden="true">
+            <div class="pw-modal-backdrop" data-close></div>
+            <div class="pw-modal-card" role="dialog" aria-modal="true" aria-labelledby="pw-title">
+                <div class="pw-modal-head">
+                    <h3 id="pw-title">下载 MCDownloader</h3>
+                    <button class="pw-close" aria-label="关闭" data-close>&times;</button>
+                </div>
+                <p class="pw-desc">该文件需校验密码，请在下方输入：</p>
+                <div class="pw-field">
+                    <input type="password" id="pw-input" class="pw-input" placeholder="请输入密码" autocomplete="off" spellcheck="false">
+                    <button class="pw-toggle" id="pw-toggle" aria-label="切换密码可见性">
+                        <svg id="pw-eye-on" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <svg id="pw-eye-off" style="display:none" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    </button>
+                </div>
+                <p class="pw-err" id="pw-err" hidden></p>
+                <div class="pw-actions">
+                    <button class="pw-btn pw-btn-cancel" data-close>取消</button>
+                    <button class="pw-btn pw-btn-submit" id="pw-submit">
+                        <span class="pw-btn-label">确认下载</span>
+                        <span class="pw-spinner" id="pw-spinner" hidden></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <script src="js/script.js"></script>
     </body>
 </html>

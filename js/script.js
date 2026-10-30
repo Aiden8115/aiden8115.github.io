@@ -1,6 +1,26 @@
-/* ===== Aiden8115 按钮交互与特效 ===== */
+/* ===== Aiden8115 · 按钮交互 + 密码弹窗 + fetch 下载 ===== */
 
-// 下载触发 + toast 提示 + 按钮 is-done 状态
+const API_BASE = 'https://server.aiden8115.cn';
+const API_MC_DOWNLOAD = API_BASE + '/api/download/mcdownloader';
+
+/* ========== Toast ========== */
+function showToast(text, ok) {
+    const stack = document.getElementById('toast-stack');
+    if (!stack) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    if (ok === false) toast.style.background = 'linear-gradient(135deg, #ef4444, #b91c1c)';
+    toast.innerHTML = '<span class="dot"></span><span>' + text + '</span>';
+    stack.appendChild(toast);
+    setTimeout(function () {
+        toast.classList.add('is-out');
+        toast.addEventListener('animationend', function () {
+            if (toast.parentNode) toast.parentNode.removeChild(toast);
+        }, { once: true });
+    }, 2800);
+}
+
+/* ========== 普通下载（前端静态文件） ========== */
 function downloadByUrl(url, name, label) {
     const a = document.createElement('a');
     a.href = url;
@@ -9,30 +29,13 @@ function downloadByUrl(url, name, label) {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    showToast(label + ' 下载已触发');
+    showToast(label + ' 下载已触发', true);
 }
 
-function showToast(text) {
-    const stack = document.getElementById('toast-stack');
-    if (!stack) return;
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = '<span class="dot"></span><span>' + text + '</span>';
-    stack.appendChild(toast);
-    setTimeout(function () {
-        toast.classList.add('is-out');
-        toast.addEventListener('animationend', function () {
-            if (toast.parentNode) toast.parentNode.removeChild(toast);
-        }, { once: true });
-    }, 2400);
-}
-
-// 按钮 ripple + is-done 状态
+/* ========== 按钮 ripple + ✓ 状态 ========== */
 function installButtonFx(btn) {
     let busy = false;
-
     btn.addEventListener('click', function (e) {
-        // 涟漪
         const rect = btn.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         const span = document.createElement('span');
@@ -45,7 +48,6 @@ function installButtonFx(btn) {
             if (span.parentNode) span.parentNode.removeChild(span);
         }, { once: true });
 
-        // ✓ 状态
         if (!busy) {
             busy = true;
             btn.classList.add('is-done');
@@ -61,18 +63,157 @@ installButtonFx(document.getElementById('btn-fastgithub'));
 installButtonFx(document.getElementById('btn-mcdownloader'));
 installButtonFx(document.getElementById('btn-geo-ppt'));
 
-// 按钮各自的下载逻辑
+/* ========== 三个按钮的下载分支 ========== */
 document.getElementById('btn-fastgithub').addEventListener('click', function () {
     downloadByUrl('download/fastgithub-win-x64.zip', 'fastgithub-win-x64.zip', 'FastGitHub');
 });
-document.getElementById('btn-mcdownloader').addEventListener('click', function () {
-    downloadByUrl('download/MCDownloader-setup.exe', 'MCDownloader-setup.exe', 'MCDownloader');
-});
+document.getElementById('btn-mcdownloader').addEventListener('click', openPasswordModal);
 document.getElementById('btn-geo-ppt').addEventListener('click', function () {
     downloadByUrl('download/dl.pptx', 'dl.pptx', '地理PPT');
 });
 
-// ===== 光标光晕（rAF throttle） =====
+/* ========== MCDownloader 密码弹窗 ========== */
+const pwModal  = document.getElementById('pw-modal');
+const pwInput  = document.getElementById('pw-input');
+const pwErr    = document.getElementById('pw-err');
+const pwSubmit = document.getElementById('pw-submit');
+const pwLabel  = pwSubmit.querySelector('.pw-btn-label');
+const pwSpinner = document.getElementById('pw-spinner');
+const pwEyeOn  = document.getElementById('pw-eye-on');
+const pwEyeOff = document.getElementById('pw-eye-off');
+let pwBusy = false;
+
+function openPasswordModal() {
+    pwModal.classList.add('is-open');
+    pwModal.setAttribute('aria-hidden', 'false');
+    pwInput.value = '';
+    hideError();
+    setTimeout(function () { pwInput.focus(); }, 60);
+}
+
+function closePasswordModal() {
+    if (pwBusy) return;
+    pwModal.classList.remove('is-open');
+    pwModal.setAttribute('aria-hidden', 'true');
+    hideError();
+}
+
+function showError(msg) {
+    pwErr.textContent = msg;
+    pwErr.hidden = false;
+    pwInput.classList.remove('is-error');
+    // 强制 reflow 以重新触发 shake 动画
+    void pwInput.offsetWidth;
+    pwInput.classList.add('is-error');
+    pwInput.focus();
+}
+function hideError() {
+    pwErr.hidden = true;
+    pwInput.classList.remove('is-error');
+}
+
+// backdrop 点击关闭（backdrop-filter 会吞事件，CSS 里已去掉）
+document.querySelector('.pw-modal-backdrop').addEventListener('click', closePasswordModal);
+
+// 关闭按钮
+document.querySelectorAll('[data-close]').forEach(function (el) {
+    el.addEventListener('click', closePasswordModal);
+});
+
+// ESC
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && pwModal.classList.contains('is-open')) {
+        closePasswordModal();
+    }
+});
+
+// 密码可见性切换
+document.getElementById('pw-toggle').addEventListener('click', function () {
+    const isText = pwInput.type === 'text';
+    pwInput.type = isText ? 'password' : 'text';
+    pwEyeOn.style.display  = isText ? '' : 'none';
+    pwEyeOff.style.display = isText ? 'none' : '';
+    pwInput.focus();
+});
+
+// Enter 提交
+pwInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        submitPassword();
+    }
+});
+pwSubmit.addEventListener('click', submitPassword);
+
+function setSubmitBusy(busy) {
+    pwBusy = busy;
+    pwSubmit.disabled = busy;
+    pwInput.disabled = busy;
+    pwLabel.textContent = busy ? '下载中...' : '确认下载';
+    pwSpinner.hidden = !busy;
+}
+
+async function submitPassword() {
+    if (pwBusy) return;
+    const pwd = pwInput.value.trim();
+    if (!pwd) {
+        showError('密码不能为空');
+        return;
+    }
+
+    hideError();
+    setSubmitBusy(true);
+
+    try {
+        const res = await fetch(API_MC_DOWNLOAD, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: pwd })
+        });
+
+        if (res.status === 403) {
+            showError('密码错误，请重试');
+            setSubmitBusy(false);
+            return;
+        }
+        if (res.status === 404) {
+            showError('服务器文件未找到');
+            setSubmitBusy(false);
+            return;
+        }
+        if (!res.ok) {
+            showError('服务器错误（HTTP ' + res.status + '）');
+            setSubmitBusy(false);
+            return;
+        }
+
+        // 成功：从 Content-Disposition 取文件名，取不到用默认
+        const cd = res.headers.get('Content-Disposition') || '';
+        let fileName = 'MCDownloader-setup.exe';
+        const m = cd.match(/filename\*?=(?:UTF-8'')?"?([^";]+)"?/i);
+        if (m && m[1]) fileName = decodeURIComponent(m[1].trim());
+
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+
+        showToast('MCDownloader 下载已触发 ✓', true);
+        closePasswordModal();
+    } catch (err) {
+        showError('网络错误，请稍后重试');
+        console.error('[MCDownloader] fetch failed:', err);
+        setSubmitBusy(false);
+    }
+}
+
+/* ========== 光标光晕（rAF 缓动跟随） ========== */
 (function () {
     const glow = document.getElementById('cursor-glow');
     if (!glow) return;
@@ -87,7 +228,6 @@ document.getElementById('btn-geo-ppt').addEventListener('click', function () {
     });
 
     function tick() {
-        // 平滑缓动，让光晕有"跟随感"
         curX += (targetX - curX) * 0.14;
         curY += (targetY - curY) * 0.14;
         glow.style.transform = 'translate(' + curX + 'px, ' + curY + 'px) translate(-50%, -50%)';
