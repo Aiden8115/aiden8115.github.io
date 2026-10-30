@@ -164,11 +164,16 @@ async function submitPassword() {
     hideError();
     setSubmitBusy(true);
 
+    // 12 秒超时：服务器没部署或慢到不行就主动 abort
+    const ctrl = new AbortController();
+    const timer = setTimeout(function () { ctrl.abort(); }, 12000);
+
     try {
         const res = await fetch(API_MC_DOWNLOAD, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ password: pwd })
+            body: JSON.stringify({ password: pwd }),
+            signal: ctrl.signal
         });
 
         if (res.status === 403) {
@@ -207,9 +212,17 @@ async function submitPassword() {
         showToast('MCDownloader 下载已触发 ✓', true);
         closePasswordModal();
     } catch (err) {
-        showError('网络错误，请稍后重试');
+        if (err.name === 'AbortError') {
+            showError('连接超时，服务器 server.aiden8115.cn 可能未启动');
+        } else if (err instanceof TypeError) {
+            showError('无法连接下载服务器（可能是后端未部署、CORS 被拦截或网络问题）');
+        } else {
+            showError('请求失败：' + (err.message || '未知错误'));
+        }
         console.error('[MCDownloader] fetch failed:', err);
         setSubmitBusy(false);
+    } finally {
+        clearTimeout(timer);
     }
 }
 
