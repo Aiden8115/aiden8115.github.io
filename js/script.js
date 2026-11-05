@@ -91,8 +91,9 @@ function openPasswordModal() {
     setTimeout(function () { pwInput.focus(); }, 60);
 }
 
-function closePasswordModal() {
-    if (pwBusy) return;
+function closePasswordModal(force) {
+    // force=true 时绕过 pwBusy 检查（提交成功后强制关闭）
+    if (!force && pwBusy) return;
     pwModal.classList.remove('is-open');
     pwModal.setAttribute('aria-hidden', 'true');
     hideError();
@@ -149,7 +150,7 @@ function setSubmitBusy(busy) {
     pwBusy = busy;
     pwSubmit.disabled = busy;
     pwInput.disabled = busy;
-    pwLabel.textContent = busy ? '下载中...' : '确认下载';
+    pwLabel.textContent = busy ? '校验中...' : '确认下载';
     pwSpinner.hidden = !busy;
 }
 
@@ -164,17 +165,19 @@ async function submitPassword() {
     hideError();
     setSubmitBusy(true);
 
-    // 12 秒超时：服务器没部署或慢到不行就主动 abort
+    // Step 1: fetch 只做密码校验（JSON POST，服务器 0.14s 回 202）
     const ctrl = new AbortController();
-    const timer = setTimeout(function () { ctrl.abort(); }, 12000);
+    const timer = setTimeout(function () { ctrl.abort(); }, 5000);
 
     try {
         const res = await fetch(API_MC_DOWNLOAD, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ password: pwd }),
-            signal: ctrl.signal
+            signal: ctrl.signal,
+            mode: 'cors'
         });
+        clearTimeout(timer);
 
         if (res.status === 403) {
             showError('密码错误，请重试');
@@ -192,37 +195,36 @@ async function submitPassword() {
             return;
         }
 
-        // 成功：从 Content-Disposition 取文件名，取不到用默认
-        const cd = res.headers.get('Content-Disposition') || '';
-        let fileName = 'MCDownloader-setup.exe';
-        const m = cd.match(/filename\*?=(?:UTF-8'')?"?([^";]+)"?/i);
-        if (m && m[1]) fileName = decodeURIComponent(m[1].trim());
+        // Step 2: 密码对 → 强制关弹窗 + 解除 busy
+        closePasswordModal(true);
+        setSubmitBusy(false);
+        showToast('开始下载...', true);
 
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = fileName;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-
-        showToast('MCDownloader 下载已触发 ✓', true);
-        closePasswordModal();
+        // Step 3: 动态创建 form，浏览器原生流式下载（底部显示进度条）
+        // form POST 用 form-urlencoded，服务器流式返回 25MB 文件
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = API_MC_DOWNLOAD;
+        form.style.display = 'none';
+        var field = document.createElement('input');
+        field.type = 'hidden';
+        field.name = 'password';
+        field.value = pwd;
+        form.appendChild(field);
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
     } catch (err) {
+        clearTimeout(timer);
         if (err.name === 'AbortError') {
-            showError('连接超时，服务器 server.aiden8115.cn 可能未启动');
+            showError('连接超时（5 秒无响应），检查网络或服务器');
         } else if (err instanceof TypeError) {
-            showError('无法连接下载服务器（可能是后端未部署、CORS 被拦截或网络问题）');
+            showError('无法连接服务器（CORS 或网络问题）');
         } else {
             showError('请求失败：' + (err.message || '未知错误'));
         }
         console.error('[MCDownloader] fetch failed:', err);
         setSubmitBusy(false);
-    } finally {
-        clearTimeout(timer);
     }
 }
 

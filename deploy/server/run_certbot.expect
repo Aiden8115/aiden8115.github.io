@@ -1,0 +1,62 @@
+#!/usr/bin/env expect
+# certbot DNS-01 expect wrapper
+# 1. Launch certbot manual dns
+# 2. Capture token
+# 3. Wait for external signal (/tmp/certbot_go.txt)
+# 4. Send Enter → certbot verifies DNS → completes → writes exit code
+
+set timeout 600
+spawn sudo certbot certonly --manual -d server.aiden8115.cn --preferred-challenges dns --agree-tos --register-unsafely-without-email --manual-public-ip-logging-ok
+
+# 等待 "Press Enter to Continue" 之前的 token
+expect {
+    -re {with the following value:\r?\n\r?\n([A-Za-z0-9_-]+)} {
+        set token $expect_out(1,string)
+        puts "\n=== TOKEN: $token ==="
+        # 写入文件让外部读取
+        set f [open "/tmp/certbot_token.txt" w]
+        puts $f $token
+        close $f
+    }
+    timeout {
+        puts "TIMEOUT waiting for token"
+        exit 1
+    }
+}
+
+# 等待 Press Enter
+expect {
+    "Press Enter to Continue" {
+        puts "\n=== 等待 DNSPod 更新完成后发送 /tmp/certbot_go.txt ==="
+    }
+    timeout {
+        puts "TIMEOUT waiting for prompt"
+        exit 1
+    }
+}
+
+# 等待外部信号文件
+set waited 0
+while {![file exists /tmp/certbot_go.txt] && $waited < 480} {
+    sleep 2
+    incr waited 2
+}
+
+# 发送回车
+send "\r"
+
+# 等待 certbot 结束
+expect eof
+catch wait result
+set exit_code [lindex $result 3]
+
+set f [open "/tmp/certbot_exit.txt" w]
+puts $f $exit_code
+close $f
+
+if {$exit_code == 0} {
+    puts "\n=== CERTIFICATE ISSUED SUCCESSFULLY ==="
+} else {
+    puts "\n=== CERTBOT FAILED with exit code $exit_code ==="
+}
+exit $exit_code
