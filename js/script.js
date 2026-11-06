@@ -150,7 +150,7 @@ function setSubmitBusy(busy) {
     pwBusy = busy;
     pwSubmit.disabled = busy;
     pwInput.disabled = busy;
-    pwLabel.textContent = busy ? '校验中...' : '确认下载';
+    pwLabel.textContent = busy ? '下载中...' : '确认下载';
     pwSpinner.hidden = !busy;
 }
 
@@ -165,20 +165,19 @@ async function submitPassword() {
     hideError();
     setSubmitBusy(true);
 
-    // Step 1: fetch 只做密码校验（JSON POST，服务器 0.14s 回 202）
-    const ctrl = new AbortController();
-    const timer = setTimeout(function () { ctrl.abort(); }, 5000);
-
+    // 单次 fetch form-urlencoded POST：
+    //   密码错 → 403 + JSON   （服务器 0.14s 回）
+    //   密码对 → 200 + 文件流 （浏览器显示下载进度条）
+    // 用 fetch 不用 form.submit()，避免跨域顶层导航触发 ERR_CONNECTION_RESET
     try {
         const res = await fetch(API_MC_DOWNLOAD, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ password: pwd }),
-            signal: ctrl.signal,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'password=' + encodeURIComponent(pwd),
             mode: 'cors'
         });
-        clearTimeout(timer);
 
+        // 错误：读 JSON 显示
         if (res.status === 403) {
             showError('密码错误，请重试');
             setSubmitBusy(false);
@@ -190,40 +189,40 @@ async function submitPassword() {
             return;
         }
         if (!res.ok) {
-            showError('服务器错误（HTTP ' + res.status + '）');
+            var errText = '';
+            try { errText = (await res.json()).message || ''; } catch (e) {}
+            showError(errText || ('服务器错误（HTTP ' + res.status + '）'));
             setSubmitBusy(false);
             return;
         }
 
-        // Step 2: 密码对 → 强制关弹窗 + 解除 busy
+        // 成功：关弹窗 → 从 Content-Disposition 取文件名 → blob 触发下载
         closePasswordModal(true);
         setSubmitBusy(false);
-        showToast('开始下载...', true);
+        showToast('开始下载 BestMCLauncher...', true);
 
-        // Step 3: 动态创建 form，浏览器原生流式下载（底部显示进度条）
-        // form POST 用 form-urlencoded，服务器流式返回 25MB 文件
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = API_MC_DOWNLOAD;
-        form.style.display = 'none';
-        var field = document.createElement('input');
-        field.type = 'hidden';
-        field.name = 'password';
-        field.value = pwd;
-        form.appendChild(field);
-        document.body.appendChild(form);
-        form.submit();
-        document.body.removeChild(form);
+        var cd = res.headers.get('Content-Disposition') || '';
+        var fileName = 'BestMCLauncher-Setup-1.0.0.exe';
+        var m = cd.match(/filename\*?=(?:UTF-8'')?"?([^";]+)"?/i);
+        if (m && m[1]) fileName = decodeURIComponent(m[1].trim());
+
+        var blob = await res.blob();
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
     } catch (err) {
-        clearTimeout(timer);
-        if (err.name === 'AbortError') {
-            showError('连接超时（5 秒无响应），检查网络或服务器');
-        } else if (err instanceof TypeError) {
+        if (err instanceof TypeError) {
             showError('无法连接服务器（CORS 或网络问题）');
         } else {
             showError('请求失败：' + (err.message || '未知错误'));
         }
-        console.error('[MCDownloader] fetch failed:', err);
+        console.error('[BestMCLauncher] fetch failed:', err);
         setSubmitBusy(false);
     }
 }
