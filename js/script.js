@@ -61,16 +61,12 @@ function installButtonFx(btn) {
 
 installButtonFx(document.getElementById('btn-fastgithub'));
 installButtonFx(document.getElementById('btn-mcdownloader'));
-installButtonFx(document.getElementById('btn-geo-ppt'));
 
-/* ========== 三个按钮的下载分支 ========== */
+/* ========== 下载分支（WSMUD2攻略为链接跳转，无需处理） ========== */
 document.getElementById('btn-fastgithub').addEventListener('click', function () {
     downloadByUrl('download/fastgithub-win-x64.zip', 'fastgithub-win-x64.zip', 'FastGitHub');
 });
 document.getElementById('btn-mcdownloader').addEventListener('click', openPasswordModal);
-document.getElementById('btn-geo-ppt').addEventListener('click', function () {
-    downloadByUrl('download/dl.pptx', 'dl.pptx', '地理PPT');
-});
 
 /* ========== MCDownloader 密码弹窗 ========== */
 const pwModal  = document.getElementById('pw-modal');
