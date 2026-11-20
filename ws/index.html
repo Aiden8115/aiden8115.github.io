@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WSMUD2 攻略 · Aiden8115</title>
+        <link rel="icon" href="../aiden8115_skin64.png" type="image/png">
+        <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+        <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
+    </head>
+    <body class="page-ws">
+        <!-- 独立特效层：背景几何装饰 -->
+        <svg class="bg-deco" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g class="d1">
+                <line x1="0" y1="120"  x2="1600" y2="120"  />
+                <line x1="0" y1="260"  x2="1600" y2="260"  />
+                <line x1="0" y1="420"  x2="1600" y2="420"  />
+                <line x1="0" y1="600"  x2="1600" y2="600"  />
+                <line x1="0" y1="780"  x2="1600" y2="780"  />
+            </g>
+            <g class="d2" transform="translate(200,0)">
+                <line x1="0" y1="180"  x2="1600" y2="180"  />
+                <line x1="0" y1="330"  x2="1600" y2="330"  />
+                <line x1="0" y1="500"  x2="1600" y2="500"  />
+                <line x1="0" y1="680"  x2="1600" y2="680"  />
+                <line x1="0" y1="840"  x2="1600" y2="840"  />
+            </g>
+            <rect class="d3" x="120"  y="160"  width="60" height="60" rx="10" fill="none" stroke="rgba(0,229,255,0.18)" stroke-width="1.5"/>
+            <rect class="d4" x="1420" y="620"  width="80" height="80" rx="14" fill="none" stroke="rgba(47,107,255,0.22)" stroke-width="1.5"/>
+            <rect class="d1" x="1380" y="180"  width="36" height="36" rx="8"  fill="none" stroke="rgba(124,58,237,0.20)" stroke-width="1.5"/>
+            <rect class="d2" x="180"  y="680"  width="44" height="44" rx="10" fill="none" stroke="rgba(0,229,255,0.16)" stroke-width="1.5"/>
+            <g class="d3" stroke="rgba(0,229,255,0.22)" stroke-width="1.2">
+                <line x1="340"  y1="220" x2="360"  y2="220"/>
+                <line x1="350"  y1="210" x2="350"  y2="230"/>
+            </g>
+            <g class="d4" stroke="rgba(47,107,255,0.22)" stroke-width="1.2">
+                <line x1="1280" y1="460" x2="1300" y2="460"/>
+                <line x1="1290" y1="450" x2="1290" y2="470"/>
+            </g>
+        </svg>
+
+        <!-- 独立特效层：光标光晕 -->
+        <div class="cursor-glow" id="cursor-glow"></div>
+
+        <!-- 主内容面板 -->
+        <!-- 主内容：左侧侧边栏 + 右侧宽内容区 -->
+        <div class="ws-layout">
+            <aside class="ws-sidebar">
+                <h2 class="ws-sidebar-title">目录</h2>
+                <p class="ws-sidebar-empty">攻略整理中，章节稍后上线。</p>
+                <a class="btn ws-back" href="../">返回首页</a>
+            </aside>
+            <main class="panel ws-main">
+                <h1 class="title">WSMUD2</h1>
+                <p class="sub">攻略页面正在整理中，敬请期待。</p>
+                <p class="sub">内容上线后将在此按章节展示，页面会随内容长度向下延伸，可直接滚动阅读。</p>
+            </main>
+        </div>
+
+        <script>
+            /* 光标光晕（rAF 缓动跟随） */
+            (function () {
+                const glow = document.getElementById('cursor-glow');
+                if (!glow) return;
+
+                let targetX = window.innerWidth / 2;
+                let targetY = window.innerHeight / 2;
+                let curX = targetX, curY = targetY;
+
+                document.addEventListener('mousemove', function (e) {
+                    targetX = e.clientX;
+                    targetY = e.clientY;
+                });
+
+                function tick() {
+                    curX += (targetX - curX) * 0.14;
+                    curY += (targetY - curY) * 0.14;
+                    glow.style.transform = 'translate(' + curX + 'px, ' + curY + 'px) translate(-50%, -50%)';
+                    requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            })();
+        </script>
+    </body>
+</html>
