@@ -8,18 +8,18 @@
       "children": [
         {
           "title": "游戏介绍",
-          "slug": "pibfjwzzpji",
-          "path": "home/pibfjwzzpji"
+          "slug": "youxijieshao",
+          "path": "home/youxijieshao"
         },
         {
           "title": "武神2更新公告合集",
-          "slug": "phg3rw6zyui",
-          "path": "home/phg3rw6zyui"
+          "slug": "wushen2gengxingonggaoheji",
+          "path": "home/wushen2gengxingonggaoheji"
         },
         {
           "title": "梗百科",
-          "slug": "pqvldwbo51i",
-          "path": "home/pqvldwbo51i"
+          "slug": "gengbaike",
+          "path": "home/gengbaike"
         }
       ]
     },
@@ -50,18 +50,18 @@
           "children": [
             {
               "title": "【药帝】虚竹2.9",
-              "slug": "pn9qxwabp6i",
-              "path": "promotion/rank4/pn9qxwabp6i"
+              "slug": "yaodixuzhu29",
+              "path": "promotion/rank4/yaodixuzhu29"
             },
             {
               "title": "进阶记录",
-              "slug": "pxmppwuzowi",
-              "path": "promotion/rank4/pxmppwuzowi"
+              "slug": "jinjiejilu",
+              "path": "promotion/rank4/jinjiejilu"
             },
             {
               "title": "大佬进阶记录",
-              "slug": "pez4dwxjati",
-              "path": "promotion/rank4/pez4dwxjati"
+              "slug": "dalaojinjiejilu",
+              "path": "promotion/rank4/dalaojinjiejilu"
             }
           ]
         },
@@ -72,8 +72,8 @@
           "children": [
             {
               "title": "前期",
-              "slug": "pfqbiwuf1yi",
-              "path": "promotion/rank5/pfqbiwuf1yi"
+              "slug": "qianqi",
+              "path": "promotion/rank5/qianqi"
             }
           ]
         },
@@ -84,13 +84,13 @@
           "children": [
             {
               "title": "基础属性",
-              "slug": "pnuibwpcvoi",
-              "path": "promotion/stats/pnuibwpcvoi"
+              "slug": "jichushuxing",
+              "path": "promotion/stats/jichushuxing"
             },
             {
               "title": "出手速度原理计算与举例",
-              "slug": "pg0aiwucxzi",
-              "path": "promotion/stats/pg0aiwucxzi"
+              "slug": "chushousuduyuanlijisuanyujuli",
+              "path": "promotion/stats/chushousuduyuanlijisuanyujuli"
             }
           ]
         },
@@ -101,23 +101,23 @@
           "children": [
             {
               "title": "挖矿",
-              "slug": "pkc3lwoxdhi",
-              "path": "promotion/idle/pkc3lwoxdhi"
+              "slug": "wakuang",
+              "path": "promotion/idle/wakuang"
             },
             {
               "title": "钓鱼",
-              "slug": "prkdrwtr9zi",
-              "path": "promotion/idle/prkdrwtr9zi"
+              "slug": "diaoyu",
+              "path": "promotion/idle/diaoyu"
             },
             {
               "title": "采药",
-              "slug": "pig9ewcneli",
-              "path": "promotion/idle/pig9ewcneli"
+              "slug": "caiyao",
+              "path": "promotion/idle/caiyao"
             },
             {
               "title": "闭关",
-              "slug": "po09twihrzi",
-              "path": "promotion/idle/po09twihrzi"
+              "slug": "biguan",
+              "path": "promotion/idle/biguan"
             }
           ]
         },
@@ -185,183 +185,183 @@
       "children": [
         {
           "title": "树林",
-          "slug": "pe77nwh1mki",
-          "path": "dungeon/pe77nwh1mki"
+          "slug": "shulin",
+          "path": "dungeon/shulin"
         },
         {
           "title": "财主府",
-          "slug": "pumwgwmompi",
-          "path": "dungeon/pumwgwmompi"
+          "slug": "caizhufu",
+          "path": "dungeon/caizhufu"
         },
         {
           "title": "流氓巷",
-          "slug": "ppuwuwlyuui",
-          "path": "dungeon/ppuwuwlyuui"
+          "slug": "liumangxiang",
+          "path": "dungeon/liumangxiang"
         },
         {
           "title": "丽春院",
-          "slug": "prhoyw78dgi",
-          "path": "dungeon/prhoyw78dgi"
+          "slug": "lichunyuan",
+          "path": "dungeon/lichunyuan"
         },
         {
           "title": "兵营",
-          "slug": "piolcwexupi",
-          "path": "dungeon/piolcwexupi"
+          "slug": "bingying",
+          "path": "dungeon/bingying"
         },
         {
           "title": "庄府",
-          "slug": "pi1n3wtgigi",
-          "path": "dungeon/pi1n3wtgigi"
+          "slug": "zhuangfu",
+          "path": "dungeon/zhuangfu"
         },
         {
           "title": "鳌拜府",
-          "slug": "pevnnwvkvmi",
-          "path": "dungeon/pevnnwvkvmi"
+          "slug": "aobaifu",
+          "path": "dungeon/aobaifu"
         },
         {
           "title": "天地会",
-          "slug": "pmsdswzawwi",
-          "path": "dungeon/pmsdswzawwi"
+          "slug": "tiandihui",
+          "path": "dungeon/tiandihui"
         },
         {
           "title": "神龙教",
-          "slug": "pqdpvwbyl8i",
-          "path": "dungeon/pqdpvwbyl8i"
+          "slug": "shenlongjiao",
+          "path": "dungeon/shenlongjiao"
         },
         {
           "title": "关外",
-          "slug": "pmdoowar59i",
-          "path": "dungeon/pmdoowar59i"
+          "slug": "guanwai",
+          "path": "dungeon/guanwai"
         },
         {
           "title": "温府（宗师初期卡关）",
-          "slug": "pnfxnw41e0i",
-          "path": "dungeon/pnfxnw41e0i"
+          "slug": "wenfuzongshichuqikaguan",
+          "path": "dungeon/wenfuzongshichuqikaguan"
         },
         {
           "title": "五毒教",
-          "slug": "pnavzwvnaui",
-          "path": "dungeon/pnavzwvnaui"
+          "slug": "wudujiao",
+          "path": "dungeon/wudujiao"
         },
         {
           "title": "恒山",
-          "slug": "pjaqmwpligi",
-          "path": "dungeon/pjaqmwpligi"
+          "slug": "hengshan",
+          "path": "dungeon/hengshan"
         },
         {
           "title": "青城山",
-          "slug": "pjm7swr81fi",
-          "path": "dungeon/pjm7swr81fi"
+          "slug": "qingchengshan",
+          "path": "dungeon/qingchengshan"
         },
         {
           "title": "衡山",
-          "slug": "pj8ygwce9yi",
-          "path": "dungeon/pj8ygwce9yi"
+          "slug": "hengshan-2",
+          "path": "dungeon/hengshan-2"
         },
         {
           "title": "泰山",
-          "slug": "pqwftwebmxi",
-          "path": "dungeon/pqwftwebmxi"
+          "slug": "taishan",
+          "path": "dungeon/taishan"
         },
         {
           "title": "嵩山",
-          "slug": "pyf7ywan8di",
-          "path": "dungeon/pyf7ywan8di"
+          "slug": "songshan",
+          "path": "dungeon/songshan"
         },
         {
           "title": "云梦沼泽",
-          "slug": "pvclbwt5fwi",
-          "path": "dungeon/pvclbwt5fwi"
+          "slug": "yunmengzhaoze",
+          "path": "dungeon/yunmengzhaoze"
         },
         {
           "title": "桃花岛",
-          "slug": "pq3mswtwaei",
-          "path": "dungeon/pq3mswtwaei"
+          "slug": "taohuadao",
+          "path": "dungeon/taohuadao"
         },
         {
           "title": "白驼山",
-          "slug": "ptvacwzjoki",
-          "path": "dungeon/ptvacwzjoki"
+          "slug": "baituoshan",
+          "path": "dungeon/baituoshan"
         },
         {
           "title": "星宿海",
-          "slug": "pvuuyw3xi1i",
-          "path": "dungeon/pvuuyw3xi1i"
+          "slug": "xingxiuhai",
+          "path": "dungeon/xingxiuhai"
         },
         {
           "title": "冰火岛",
-          "slug": "pnwrewf8gvi",
-          "path": "dungeon/pnwrewf8gvi"
+          "slug": "binghuodao",
+          "path": "dungeon/binghuodao"
         },
         {
           "title": "移花宫",
-          "slug": "pltrzwatg9i",
-          "path": "dungeon/pltrzwatg9i"
+          "slug": "yihuagong",
+          "path": "dungeon/yihuagong"
         },
         {
           "title": "燕子坞（武圣初期卡关）",
-          "slug": "pmk1lwfoqmi",
-          "path": "dungeon/pmk1lwfoqmi"
+          "slug": "yanziwuwushengchuqikaguan",
+          "path": "dungeon/yanziwuwushengchuqikaguan"
         },
         {
           "title": "黑木崖",
-          "slug": "paaqvw1hqgi",
-          "path": "dungeon/paaqvw1hqgi"
+          "slug": "heimuya",
+          "path": "dungeon/heimuya"
         },
         {
           "title": "缥缈峰",
-          "slug": "ppk6mwrkyoi",
-          "path": "dungeon/ppk6mwrkyoi"
+          "slug": "piaomiaofeng",
+          "path": "dungeon/piaomiaofeng"
         },
         {
           "title": "光明顶",
-          "slug": "pzdlbwhycui",
-          "path": "dungeon/pzdlbwhycui"
+          "slug": "guangmingding",
+          "path": "dungeon/guangmingding"
         },
         {
           "title": "天龙寺",
-          "slug": "phrpowiunbi",
-          "path": "dungeon/phrpowiunbi"
+          "slug": "tianlongsi",
+          "path": "dungeon/tianlongsi"
         },
         {
           "title": "血刀门",
-          "slug": "pdip1wrfcmi",
-          "path": "dungeon/pdip1wrfcmi"
+          "slug": "xuedaomen",
+          "path": "dungeon/xuedaomen"
         },
         {
           "title": "古墓派",
-          "slug": "ponbmwgriji",
-          "path": "dungeon/ponbmwgriji"
+          "slug": "gumupai",
+          "path": "dungeon/gumupai"
         },
         {
           "title": "华山论剑",
-          "slug": "pery0wt1bki",
-          "path": "dungeon/pery0wt1bki"
+          "slug": "huashanlunjian",
+          "path": "dungeon/huashanlunjian"
         },
         {
           "title": "侠客岛",
-          "slug": "pnfknwy24mi",
-          "path": "dungeon/pnfknwy24mi"
+          "slug": "xiakedao",
+          "path": "dungeon/xiakedao"
         },
         {
           "title": "净念禅宗",
-          "slug": "pzehrwgz3gi",
-          "path": "dungeon/pzehrwgz3gi"
+          "slug": "jingnianchanzong",
+          "path": "dungeon/jingnianchanzong"
         },
         {
           "title": "慈航静斋",
-          "slug": "peltzwm3wki",
-          "path": "dungeon/peltzwm3wki"
+          "slug": "cihangjingzhai",
+          "path": "dungeon/cihangjingzhai"
         },
         {
           "title": "阴阳谷",
-          "slug": "pumacwqtisi",
-          "path": "dungeon/pumacwqtisi"
+          "slug": "yinyanggu",
+          "path": "dungeon/yinyanggu"
         },
         {
           "title": "战神殿",
-          "slug": "pgy1cwxhgti",
-          "path": "dungeon/pgy1cwxhgti"
+          "slug": "zhanshendian",
+          "path": "dungeon/zhanshendian"
         }
       ],
       "hideChildren": true
@@ -373,89 +373,89 @@
       "children": [
         {
           "title": "黑鹰校场",
-          "slug": "phusiwi2qui",
-          "path": "forbidden/phusiwi2qui"
+          "slug": "heiyingjiaochang",
+          "path": "forbidden/heiyingjiaochang"
         },
         {
           "title": "皇城",
-          "slug": "pcwtywjjt3i",
-          "path": "forbidden/pcwtywjjt3i",
+          "slug": "huangcheng",
+          "path": "forbidden/huangcheng",
           "children": [
             {
               "title": "听雪阁·皇城·[保姆级]攻略",
-              "slug": "pzzv7wtubpi",
-              "path": "forbidden/pcwtywjjt3i/pzzv7wtubpi"
+              "slug": "tingxuegehuangchengbaomujigonglve",
+              "path": "forbidden/huangcheng/tingxuegehuangchengbaomujigonglve"
             }
           ]
         },
         {
           "title": "龙脉",
-          "slug": "pbo7iwvj1ri",
-          "path": "forbidden/pbo7iwvj1ri"
+          "slug": "longmai",
+          "path": "forbidden/longmai"
         },
         {
           "title": "蓬莱岛",
-          "slug": "paxmawskesi",
-          "path": "forbidden/paxmawskesi",
+          "slug": "penglaidao",
+          "path": "forbidden/penglaidao",
           "children": [
             {
               "title": "公共解密",
-              "slug": "pb3jlwndiii",
-              "path": "forbidden/paxmawskesi/pb3jlwndiii"
+              "slug": "gonggongjiemi",
+              "path": "forbidden/penglaidao/gonggongjiemi"
             }
           ]
         },
         {
           "title": "梅庄",
-          "slug": "ph4jowzntai",
-          "path": "forbidden/ph4jowzntai"
+          "slug": "meizhuang",
+          "path": "forbidden/meizhuang"
         },
         {
           "title": "忘忧谷",
-          "slug": "pp3swwfibvi",
-          "path": "forbidden/pp3swwfibvi",
+          "slug": "wangyougu",
+          "path": "forbidden/wangyougu",
           "children": [
             {
               "title": "不完全攻略",
-              "slug": "ph4mcwdnawi",
-              "path": "forbidden/pp3swwfibvi/ph4mcwdnawi"
+              "slug": "buwanquangonglve",
+              "path": "forbidden/wangyougu/buwanquangonglve"
             },
             {
               "title": "圆月弯刀副本攻略",
-              "slug": "pmugqwtn3ri",
-              "path": "forbidden/pp3swwfibvi/pmugqwtn3ri"
+              "slug": "yuanyuewandaofubengonglve",
+              "path": "forbidden/wangyougu/yuanyuewandaofubengonglve"
             },
             {
               "title": "ws2圆月弯刀100%攻略（附小楼面板）",
-              "slug": "pypqmwuuz1i",
-              "path": "forbidden/pp3swwfibvi/pypqmwuuz1i"
+              "slug": "ws2yuanyuewandao100gonglvefuxiaoloumianban",
+              "path": "forbidden/wangyougu/ws2yuanyuewandao100gonglvefuxiaoloumianban"
             }
           ]
         },
         {
           "title": "药王谷",
-          "slug": "pm2nbwc2kri",
-          "path": "forbidden/pm2nbwc2kri"
+          "slug": "yaowanggu",
+          "path": "forbidden/yaowanggu"
         },
         {
           "title": "蜀山",
-          "slug": "pggmmwsigti",
-          "path": "forbidden/pggmmwsigti",
+          "slug": "shushan",
+          "path": "forbidden/shushan",
           "children": [
             {
               "title": "蜀山三条线攻略新",
-              "slug": "pqtnxwkvrdi",
-              "path": "forbidden/pggmmwsigti/pqtnxwkvrdi"
+              "slug": "shushansantiaoxiangonglvexin",
+              "path": "forbidden/shushan/shushansantiaoxiangonglvexin"
             },
             {
               "title": "怪物面板",
-              "slug": "prwgows5lpi",
-              "path": "forbidden/pggmmwsigti/prwgows5lpi"
+              "slug": "guaiwumianban",
+              "path": "forbidden/shushan/guaiwumianban"
             },
             {
               "title": "全门派蜀山通用解法",
-              "slug": "plw7wwof66i",
-              "path": "forbidden/pggmmwsigti/plw7wwof66i"
+              "slug": "quanmenpaishushantongyongjiefa",
+              "path": "forbidden/shushan/quanmenpaishushantongyongjiefa"
             }
           ]
         }
@@ -468,389 +468,389 @@
       "children": [
         {
           "title": "门派拜师条件",
-          "slug": "prho6wl9zhi",
-          "path": "sect/prho6wl9zhi"
+          "slug": "menpaibaishitiaojian",
+          "path": "sect/menpaibaishitiaojian"
         },
         {
           "title": "野路子",
-          "slug": "ptb7jws5rfi",
-          "path": "sect/ptb7jws5rfi",
+          "slug": "yeluzi",
+          "path": "sect/yeluzi",
           "children": [
             {
               "title": "【逍遥】初期混紫、橙",
-              "slug": "pzfyawoxf9i",
-              "path": "sect/ptb7jws5rfi/pzfyawoxf9i"
+              "slug": "xiaoyaochuqihunzicheng",
+              "path": "sect/yeluzi/xiaoyaochuqihunzicheng"
             },
             {
               "title": "【通用】鱼竿换玄晶",
-              "slug": "pzg8mwoszhi",
-              "path": "sect/ptb7jws5rfi/pzg8mwoszhi"
+              "slug": "tongyongyuganhuanxuanjing",
+              "path": "sect/yeluzi/tongyongyuganhuanxuanjing"
             }
           ]
         },
         {
           "title": "武当（武圣后到困禅完整攻略）",
-          "slug": "pvxk1w2e1ki",
-          "path": "sect/pvxk1w2e1ki",
+          "slug": "wudangwushenghoudaokunchanwanzhenggonglve",
+          "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve",
           "children": [
             {
               "title": "【塔】60-69",
-              "slug": "psmpbwho4di",
-              "path": "sect/pvxk1w2e1ki/psmpbwho4di"
+              "slug": "ta6069",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta6069"
             },
             {
               "title": "【塔】70-79",
-              "slug": "pm6xdwbqlii",
-              "path": "sect/pvxk1w2e1ki/pm6xdwbqlii"
+              "slug": "ta7079",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta7079"
             },
             {
               "title": "【塔】80-89",
-              "slug": "pa7q9wmznri",
-              "path": "sect/pvxk1w2e1ki/pa7q9wmznri"
+              "slug": "ta8089",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta8089"
             },
             {
               "title": "【塔】90-99",
-              "slug": "peodswbyvci",
-              "path": "sect/pvxk1w2e1ki/peodswbyvci"
+              "slug": "ta9099",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta9099"
             },
             {
               "title": "【塔】100层无缝要求",
-              "slug": "ptlmxwvzaqi",
-              "path": "sect/pvxk1w2e1ki/ptlmxwvzaqi"
+              "slug": "ta100cengwufengyaoqiu",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta100cengwufengyaoqiu"
             },
             {
               "title": "【燕子坞】",
-              "slug": "pkceswv1kbi",
-              "path": "sect/pvxk1w2e1ki/pkceswv1kbi"
+              "slug": "yanziwu",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/yanziwu"
             },
             {
               "title": "【黑木崖】",
-              "slug": "pibtyw6fgfi",
-              "path": "sect/pvxk1w2e1ki/pibtyw6fgfi"
+              "slug": "heimuya-2",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/heimuya-2"
             },
             {
               "title": "【缥缈峰】",
-              "slug": "pspkgwsoavi",
-              "path": "sect/pvxk1w2e1ki/pspkgwsoavi"
+              "slug": "piaomiaofeng-2",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/piaomiaofeng-2"
             },
             {
               "title": "【光明顶】没攻略，组队去",
-              "slug": "pmsyqwoquvi",
-              "path": "sect/pvxk1w2e1ki/pmsyqwoquvi"
+              "slug": "guangmingdingmeigonglvezuduiqu",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/guangmingdingmeigonglvezuduiqu"
             },
             {
               "title": "【天龙寺】",
-              "slug": "pd7xtwdqrfi",
-              "path": "sect/pvxk1w2e1ki/pd7xtwdqrfi"
+              "slug": "tianlongsi-2",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/tianlongsi-2"
             },
             {
               "title": "【血刀门】",
-              "slug": "pp7j9wsklsi",
-              "path": "sect/pvxk1w2e1ki/pp7j9wsklsi"
+              "slug": "xuedaomen-2",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/xuedaomen-2"
             },
             {
               "title": "【古墓派】",
-              "slug": "plfwowl4lbi",
-              "path": "sect/pvxk1w2e1ki/plfwowl4lbi"
+              "slug": "gumupai-2",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/gumupai-2"
             },
             {
               "title": "【华山论剑】",
-              "slug": "pmgmewdb9li",
-              "path": "sect/pvxk1w2e1ki/pmgmewdb9li"
+              "slug": "huashanlunjian-2",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/huashanlunjian-2"
             },
             {
               "title": "【困难净念禅宗】四种攻略",
-              "slug": "pmxuew8quwi",
-              "path": "sect/pvxk1w2e1ki/pmxuew8quwi"
+              "slug": "kunnanjingnianchanzongsizhonggonglve",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/kunnanjingnianchanzongsizhonggonglve"
             },
             {
               "title": "【圆月弯刀】100%攻略（附小楼面板）",
-              "slug": "phdu8ws2sni",
-              "path": "sect/pvxk1w2e1ki/phdu8ws2sni"
+              "slug": "yuanyuewandao100gonglvefuxiaoloumianban",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/yuanyuewandao100gonglvefuxiaoloumianban"
             },
             {
               "title": "【旧版武道进阶】武当进阶",
-              "slug": "pdopnwzpaci",
-              "path": "sect/pvxk1w2e1ki/pdopnwzpaci"
+              "slug": "jiubanwudaojinjiewudangjinjie",
+              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/jiubanwudaojinjiewudangjinjie"
             }
           ]
         },
         {
           "title": "少林",
-          "slug": "pszpqwwu29i",
-          "path": "sect/pszpqwwu29i",
+          "slug": "shaolin",
+          "path": "sect/shaolin",
           "children": [
             {
               "title": "【武道】70-79",
-              "slug": "pxraowutrfi",
-              "path": "sect/pszpqwwu29i/pxraowutrfi"
+              "slug": "wudao7079",
+              "path": "sect/shaolin/wudao7079"
             },
             {
               "title": "【庄府-衡山】副本攻略",
-              "slug": "pfvjgwld1ni",
-              "path": "sect/pszpqwwu29i/pfvjgwld1ni"
+              "slug": "zhuangfuhengshanfubengonglve",
+              "path": "sect/shaolin/zhuangfuhengshanfubengonglve"
             },
             {
               "title": "【缥缈峰】普通",
-              "slug": "pqsciwcicbi",
-              "path": "sect/pszpqwwu29i/pqsciwcicbi"
+              "slug": "piaomiaofengputong",
+              "path": "sect/shaolin/piaomiaofengputong"
             },
             {
               "title": "【困禅】",
-              "slug": "pyhqawhajpi",
-              "path": "sect/pszpqwwu29i/pyhqawhajpi"
+              "slug": "kunchan",
+              "path": "sect/shaolin/kunchan"
             }
           ]
         },
         {
           "title": "华山",
-          "slug": "peuk3wbjtyi",
-          "path": "sect/peuk3wbjtyi",
+          "slug": "huashan",
+          "path": "sect/huashan",
           "children": [
             {
               "title": "【嵩山】牢华山嵩山",
-              "slug": "pvrs3w2auii",
-              "path": "sect/peuk3wbjtyi/pvrs3w2auii"
+              "slug": "songshanlaohuashansongshan",
+              "path": "sect/huashan/songshanlaohuashansongshan"
             },
             {
               "title": "【药王谷】华山过药王谷残魂攻略",
-              "slug": "prcndw1xxti",
-              "path": "sect/peuk3wbjtyi/prcndw1xxti"
+              "slug": "yaowangguhuashanguoyaowanggucanhungonglve",
+              "path": "sect/huashan/yaowangguhuashanguoyaowanggucanhungonglve"
             }
           ]
         },
         {
           "title": "峨眉",
-          "slug": "prbufwuolti",
-          "path": "sect/prbufwuolti",
+          "slug": "emei",
+          "path": "sect/emei",
           "children": [
             {
               "title": "【武道】70",
-              "slug": "ppckuwllpdi",
-              "path": "sect/prbufwuolti/ppckuwllpdi"
+              "slug": "wudao70",
+              "path": "sect/emei/wudao70"
             },
             {
               "title": "【武道】100",
-              "slug": "py4n5wu1bxi",
-              "path": "sect/prbufwuolti/py4n5wu1bxi"
+              "slug": "wudao100",
+              "path": "sect/emei/wudao100"
             },
             {
               "title": "【蜀山】",
-              "slug": "pfrimwaht6i",
-              "path": "sect/prbufwuolti/pfrimwaht6i"
+              "slug": "shushan-2",
+              "path": "sect/emei/shushan-2"
             },
             {
               "title": "【蜀山】酒剑仙",
-              "slug": "phomlwkwczi",
-              "path": "sect/prbufwuolti/phomlwkwczi"
+              "slug": "shushanjiujianxian",
+              "path": "sect/emei/shushanjiujianxian"
             },
             {
               "title": "【黑木崖】黑木崖",
-              "slug": "pdqymwhpqji",
-              "path": "sect/prbufwuolti/pdqymwhpqji"
+              "slug": "heimuyaheimuya",
+              "path": "sect/emei/heimuyaheimuya"
             },
             {
               "title": "【血刀门】无斗转",
-              "slug": "pwd9kwcarqi",
-              "path": "sect/prbufwuolti/pwd9kwcarqi"
+              "slug": "xuedaomenwudouzhuan",
+              "path": "sect/emei/xuedaomenwudouzhuan"
             },
             {
               "title": "【古墓】普通古墓",
-              "slug": "pb5thwh81zi",
-              "path": "sect/prbufwuolti/pb5thwh81zi"
+              "slug": "gumuputonggumu",
+              "path": "sect/emei/gumuputonggumu"
             },
             {
               "title": "【忘忧谷】小楼",
-              "slug": "puvv2wkga0i",
-              "path": "sect/prbufwuolti/puvv2wkga0i"
+              "slug": "wangyouguxiaolou",
+              "path": "sect/emei/wangyouguxiaolou"
             },
             {
               "title": "【蜀山】邪剑仙",
-              "slug": "pebgdwrbrii",
-              "path": "sect/prbufwuolti/pebgdwrbrii"
+              "slug": "shushanxiejianxian",
+              "path": "sect/emei/shushanxiejianxian"
             }
           ]
         },
         {
           "title": "逍遥",
-          "slug": "ppsrww0vnni",
-          "path": "sect/ppsrww0vnni",
+          "slug": "xiaoyao",
+          "path": "sect/xiaoyao",
           "children": [
             {
               "title": "【纪】门派故事",
-              "slug": "pgjmzwzdwmi",
-              "path": "sect/ppsrww0vnni/pgjmzwzdwmi"
+              "slug": "jimenpaigushi",
+              "path": "sect/xiaoyao/jimenpaigushi"
             },
             {
               "title": "【纪】仙侠传承、自在逍遥",
-              "slug": "pe0k4wfksfi",
-              "path": "sect/ppsrww0vnni/pe0k4wfksfi"
+              "slug": "jixianxiachuanchengzizaixiaoyao",
+              "path": "sect/xiaoyao/jixianxiachuanchengzizaixiaoyao"
             },
             {
               "title": "【武道】60-79",
-              "slug": "pycjnwngv2i",
-              "path": "sect/ppsrww0vnni/pycjnwngv2i"
+              "slug": "wudao6079",
+              "path": "sect/xiaoyao/wudao6079"
             },
             {
               "title": "【武道】80-89",
-              "slug": "pwnhswnb8si",
-              "path": "sect/ppsrww0vnni/pwnhswnb8si"
+              "slug": "wudao8089",
+              "path": "sect/xiaoyao/wudao8089"
             },
             {
               "title": "【武道】90",
-              "slug": "plsfewpkssi",
-              "path": "sect/ppsrww0vnni/plsfewpkssi"
+              "slug": "wudao90",
+              "path": "sect/xiaoyao/wudao90"
             },
             {
               "title": "【药王谷】杀人线残魂",
-              "slug": "po80cw5j0ai",
-              "path": "sect/ppsrww0vnni/po80cw5j0ai"
+              "slug": "yaowanggusharenxiancanhun",
+              "path": "sect/xiaoyao/yaowanggusharenxiancanhun"
             },
             {
               "title": "【蜀山】",
-              "slug": "papwbw2t09i",
-              "path": "sect/ppsrww0vnni/papwbw2t09i"
+              "slug": "shushan-3",
+              "path": "sect/xiaoyao/shushan-3"
             },
             {
               "title": "【移花宫】削弱后移花攻略",
-              "slug": "puqpiwz11ui",
-              "path": "sect/ppsrww0vnni/puqpiwz11ui"
+              "slug": "yihuagongxueruohouyihuagonglve",
+              "path": "sect/xiaoyao/yihuagongxueruohouyihuagonglve"
             },
             {
               "title": "【燕子坞】缠夺魄",
-              "slug": "puorewos1fi",
-              "path": "sect/ppsrww0vnni/puorewos1fi"
+              "slug": "yanziwuchanduopo",
+              "path": "sect/xiaoyao/yanziwuchanduopo"
             },
             {
               "title": "【黑木崖】暴力流",
-              "slug": "pg1ozwk5ubi",
-              "path": "sect/ppsrww0vnni/pg1ozwk5ubi"
+              "slug": "heimuyabaoliliu",
+              "path": "sect/xiaoyao/heimuyabaoliliu"
             },
             {
               "title": "【缥缈峰】困难飘渺李秋水打法与思路",
-              "slug": "pybnpwkai5i",
-              "path": "sect/ppsrww0vnni/pybnpwkai5i"
+              "slug": "piaomiaofengkunnanpiaomiaoliqiushuidafayusilu",
+              "path": "sect/xiaoyao/piaomiaofengkunnanpiaomiaoliqiushuidafayusilu"
             },
             {
               "title": "【缥缈峰】超极限无缝困难缥缈攻略",
-              "slug": "ph64pw2gw5i",
-              "path": "sect/ppsrww0vnni/ph64pw2gw5i"
+              "slug": "piaomiaofengchaojixianwufengkunnanpiaomiaogonglve",
+              "path": "sect/xiaoyao/piaomiaofengchaojixianwufengkunnanpiaomiaogonglve"
             },
             {
               "title": "【光明顶】组队吧",
-              "slug": "pvyhtwykebi",
-              "path": "sect/ppsrww0vnni/pvyhtwykebi"
+              "slug": "guangmingdingzuduiba",
+              "path": "sect/xiaoyao/guangmingdingzuduiba"
             },
             {
               "title": "【天龙寺】困难天龙",
-              "slug": "pb3wtwcbari",
-              "path": "sect/ppsrww0vnni/pb3wtwcbari"
+              "slug": "tianlongsikunnantianlong",
+              "path": "sect/xiaoyao/tianlongsikunnantianlong"
             },
             {
               "title": "【血刀门】血刀门高配无缝打法",
-              "slug": "ppocmwl8l4i",
-              "path": "sect/ppsrww0vnni/ppocmwl8l4i"
+              "slug": "xuedaomenxuedaomengaopeiwufengdafa",
+              "path": "sect/xiaoyao/xuedaomenxuedaomengaopeiwufengdafa"
             },
             {
               "title": "【血刀门】邪修",
-              "slug": "pl1crwlyh3i",
-              "path": "sect/ppsrww0vnni/pl1crwlyh3i"
+              "slug": "xuedaomenxiexiu",
+              "path": "sect/xiaoyao/xuedaomenxiexiu"
             },
             {
               "title": "【古墓派】低配版普通思路",
-              "slug": "phvtrwqeyui",
-              "path": "sect/ppsrww0vnni/phvtrwqeyui"
+              "slug": "gumupaidipeibanputongsilu",
+              "path": "sect/xiaoyao/gumupaidipeibanputongsilu"
             },
             {
               "title": "【华山论剑】缠夺魄",
-              "slug": "pcelvwnrsai",
-              "path": "sect/ppsrww0vnni/pcelvwnrsai"
+              "slug": "huashanlunjianchanduopo",
+              "path": "sect/xiaoyao/huashanlunjianchanduopo"
             },
             {
               "title": "【困禅】",
-              "slug": "pzt5jwhuqri",
-              "path": "sect/ppsrww0vnni/pzt5jwhuqri"
+              "slug": "kunchan-2",
+              "path": "sect/xiaoyao/kunchan-2"
             }
           ]
         },
         {
           "title": "丐帮",
-          "slug": "psnr0wo6jzi",
-          "path": "sect/psnr0wo6jzi",
+          "slug": "gaibang",
+          "path": "sect/gaibang",
           "children": [
             {
               "title": "【武道】80",
-              "slug": "pnccvwyaxoi",
-              "path": "sect/psnr0wo6jzi/pnccvwyaxoi"
+              "slug": "wudao80",
+              "path": "sect/gaibang/wudao80"
             },
             {
               "title": "【武道】100-103",
-              "slug": "psl2jwkd1vi",
-              "path": "sect/psnr0wo6jzi/psl2jwkd1vi"
+              "slug": "wudao100103",
+              "path": "sect/gaibang/wudao100103"
             },
             {
               "title": "【武道进阶】规划",
-              "slug": "pte1qw9lzxi",
-              "path": "sect/psnr0wo6jzi/pte1qw9lzxi"
+              "slug": "wudaojinjieguihua",
+              "path": "sect/gaibang/wudaojinjieguihua"
             },
             {
               "title": "【药王谷】暴打残魂",
-              "slug": "ptpz5wqopji",
-              "path": "sect/psnr0wo6jzi/ptpz5wqopji"
+              "slug": "yaowanggubaodacanhun",
+              "path": "sect/gaibang/yaowanggubaodacanhun"
             },
             {
               "title": "【天龙寺】困难天龙",
-              "slug": "pnuejw09jei",
-              "path": "sect/psnr0wo6jzi/pnuejw09jei"
+              "slug": "tianlongsikunnantianlong-2",
+              "path": "sect/gaibang/tianlongsikunnantianlong-2"
             },
             {
               "title": "【蜀山】搞笑通过",
-              "slug": "pwnrswe3oei",
-              "path": "sect/psnr0wo6jzi/pwnrswe3oei"
+              "slug": "shushangaoxiaotongguo",
+              "path": "sect/gaibang/shushangaoxiaotongguo"
             }
           ]
         },
         {
           "title": "杀手",
-          "slug": "pqdt2wlpmui",
-          "path": "sect/pqdt2wlpmui",
+          "slug": "shashou",
+          "path": "sect/shashou",
           "children": [
             {
               "title": "【温府-泰山】",
-              "slug": "pkauhwrc80i",
-              "path": "sect/pqdt2wlpmui/pkauhwrc80i"
+              "slug": "wenfutaishan",
+              "path": "sect/shashou/wenfutaishan"
             },
             {
               "title": "【血刀门】血刀",
-              "slug": "pjzesw6tzoi",
-              "path": "sect/pqdt2wlpmui/pjzesw6tzoi"
+              "slug": "xuedaomenxuedao",
+              "path": "sect/shashou/xuedaomenxuedao"
             },
             {
               "title": "【缥缈峰】普通",
-              "slug": "pbg6ow5xezi",
-              "path": "sect/pqdt2wlpmui/pbg6ow5xezi"
+              "slug": "piaomiaofengputong-2",
+              "path": "sect/shashou/piaomiaofengputong-2"
             },
             {
               "title": "【净念禅宗】困难",
-              "slug": "pen1fwrxgoi",
-              "path": "sect/pqdt2wlpmui/pen1fwrxgoi"
+              "slug": "jingnianchanzongkunnan",
+              "path": "sect/shashou/jingnianchanzongkunnan"
             },
             {
               "title": "【慈航静斋】困难",
-              "slug": "peg7xw7hvyi",
-              "path": "sect/pqdt2wlpmui/peg7xw7hvyi"
+              "slug": "cihangjingzhaikunnan",
+              "path": "sect/shashou/cihangjingzhaikunnan"
             },
             {
               "title": "【蜀山】",
-              "slug": "pete6wp72zi",
-              "path": "sect/pqdt2wlpmui/pete6wp72zi"
+              "slug": "shushan-4",
+              "path": "sect/shashou/shushan-4"
             }
           ]
         },
         {
           "title": "散人",
-          "slug": "pl6huwm7sxi",
-          "path": "sect/pl6huwm7sxi"
+          "slug": "sanren",
+          "path": "sect/sanren"
         }
       ]
     },
@@ -861,8 +861,8 @@
       "children": [
         {
           "title": "武道塔技能浏览",
-          "slug": "penc5wlwlki",
-          "path": "tower/penc5wlwlki"
+          "slug": "wudaotajinengliulan",
+          "path": "tower/wudaotajinengliulan"
         }
       ]
     },
@@ -873,8 +873,8 @@
       "children": [
         {
           "title": "禁地-绿柳山庄（已关闭）",
-          "slug": "paj5tw5h4di",
-          "path": "gang/paj5tw5h4di"
+          "slug": "jindilvliushanzhuangyiguanbi",
+          "path": "gang/jindilvliushanzhuangyiguanbi"
         }
       ]
     },
@@ -885,23 +885,23 @@
       "children": [
         {
           "title": "基础武学资料",
-          "slug": "pvsevwmtyxi",
-          "path": "martial/pvsevwmtyxi",
+          "slug": "jichuwuxueziliao",
+          "path": "martial/jichuwuxueziliao",
           "children": [
             {
               "title": "武学等级与评价",
-              "slug": "puvjkwg5pki",
-              "path": "martial/pvsevwmtyxi/puvjkwg5pki"
+              "slug": "wuxuedengjiyupingjia",
+              "path": "martial/jichuwuxueziliao/wuxuedengjiyupingjia"
             },
             {
               "title": "武学进阶",
-              "slug": "pxxhdw6kh5i",
-              "path": "martial/pvsevwmtyxi/pxxhdw6kh5i"
+              "slug": "wuxuejinjie",
+              "path": "martial/jichuwuxueziliao/wuxuejinjie"
             },
             {
               "title": "武学技能强化",
-              "slug": "ptesvw7rzti",
-              "path": "martial/pvsevwmtyxi/ptesvw7rzti"
+              "slug": "wuxuejinengqianghua",
+              "path": "martial/jichuwuxueziliao/wuxuejinengqianghua"
             }
           ]
         }
@@ -914,87 +914,87 @@
       "children": [
         {
           "title": "基础装备资料",
-          "slug": "poowtwfbfsi",
-          "path": "equipment/poowtwfbfsi",
+          "slug": "jichuzhuangbeiziliao",
+          "path": "equipment/jichuzhuangbeiziliao",
           "children": [
             {
               "title": "白色",
-              "slug": "psyxew6sqri",
-              "path": "equipment/poowtwfbfsi/psyxew6sqri"
+              "slug": "baise",
+              "path": "equipment/jichuzhuangbeiziliao/baise"
             },
             {
               "title": "绿色",
-              "slug": "peigyw22t8i",
-              "path": "equipment/poowtwfbfsi/peigyw22t8i"
+              "slug": "lvse",
+              "path": "equipment/jichuzhuangbeiziliao/lvse"
             },
             {
               "title": "蓝色",
-              "slug": "pn5fjwoyfui",
-              "path": "equipment/poowtwfbfsi/pn5fjwoyfui"
+              "slug": "lanse",
+              "path": "equipment/jichuzhuangbeiziliao/lanse"
             },
             {
               "title": "黄色",
-              "slug": "pvtiwwqlwti",
-              "path": "equipment/poowtwfbfsi/pvtiwwqlwti"
+              "slug": "huangse",
+              "path": "equipment/jichuzhuangbeiziliao/huangse"
             },
             {
               "title": "紫色",
-              "slug": "pez90wmk4ci",
-              "path": "equipment/poowtwfbfsi/pez90wmk4ci"
+              "slug": "zise",
+              "path": "equipment/jichuzhuangbeiziliao/zise"
             },
             {
               "title": "橙色",
-              "slug": "pw6s5wywbci",
-              "path": "equipment/poowtwfbfsi/pw6s5wywbci"
+              "slug": "chengse",
+              "path": "equipment/jichuzhuangbeiziliao/chengse"
             },
             {
               "title": "红色",
-              "slug": "phhdtwaiezi",
-              "path": "equipment/poowtwfbfsi/phhdtwaiezi"
+              "slug": "hongse",
+              "path": "equipment/jichuzhuangbeiziliao/hongse"
             }
           ]
         },
         {
           "title": "门派装备",
-          "slug": "pc5zrwc90ii",
-          "path": "equipment/pc5zrwc90ii",
+          "slug": "menpaizhuangbei",
+          "path": "equipment/menpaizhuangbei",
           "children": [
             {
               "title": "焚诀：橙装百分比属性的可视化",
-              "slug": "pxjldwl76ji",
-              "path": "equipment/pc5zrwc90ii/pxjldwl76ji"
+              "slug": "fenjuechengzhuangbaifenbishuxingdekeshihua",
+              "path": "equipment/menpaizhuangbei/fenjuechengzhuangbaifenbishuxingdekeshihua"
             }
           ]
         },
         {
           "title": "宝石和精炼",
-          "slug": "ppc0dwo3c2i",
-          "path": "equipment/ppc0dwo3c2i"
+          "slug": "baoshihejinglian",
+          "path": "equipment/baoshihejinglian"
         },
         {
           "title": "悟性学习打坐套",
-          "slug": "pcxv3wgoshi",
-          "path": "equipment/pcxv3wgoshi"
+          "slug": "wuxingxuexidazuotao",
+          "path": "equipment/wuxingxuexidazuotao"
         },
         {
           "title": "拍卖行装备",
-          "slug": "pgx2qwlcaji",
-          "path": "equipment/pgx2qwlcaji"
+          "slug": "paimaixingzhuangbei",
+          "path": "equipment/paimaixingzhuangbei"
         },
         {
           "title": "装备自制",
-          "slug": "pgqhswnsphi",
-          "path": "equipment/pgqhswnsphi",
+          "slug": "zhuangbeizizhi",
+          "path": "equipment/zhuangbeizizhi",
           "children": [
             {
               "title": "装备自制",
-              "slug": "pv5i1wu8t1i",
-              "path": "equipment/pgqhswnsphi/pv5i1wu8t1i"
+              "slug": "zhuangbeizizhi-2",
+              "path": "equipment/zhuangbeizizhi/zhuangbeizizhi-2"
             },
             {
               "title": "装备自制",
-              "slug": "pm3exwjhlfi",
-              "path": "equipment/pgqhswnsphi/pm3exwjhlfi"
+              "slug": "zhuangbeizizhi-3",
+              "path": "equipment/zhuangbeizizhi/zhuangbeizizhi-3"
             }
           ]
         }
@@ -1007,8 +1007,8 @@
       "children": [
         {
           "title": "丹方",
-          "slug": "puvoqwurnii",
-          "path": "recipes/puvoqwurnii"
+          "slug": "danfang",
+          "path": "recipes/danfang"
         }
       ]
     },
@@ -1024,13 +1024,13 @@
       "children": [
         {
           "title": "使用教程",
-          "slug": "pjx7jwihaji",
-          "path": "extended/pjx7jwihaji"
+          "slug": "shiyongjiaocheng",
+          "path": "extended/shiyongjiaocheng"
         },
         {
           "title": "触发器扩展教程",
-          "slug": "pnhspwybumi",
-          "path": "extended/pnhspwybumi"
+          "slug": "chufaqikuozhanjiaocheng",
+          "path": "extended/chufaqikuozhanjiaocheng"
         }
       ]
     },
@@ -1041,18 +1041,18 @@
       "children": [
         {
           "title": "APP",
-          "slug": "pfy3ewrfxni",
-          "path": "tools/pfy3ewrfxni"
+          "slug": "app",
+          "path": "tools/app"
         },
         {
           "title": "颜色标签对照表",
-          "slug": "pp3qhwqg0gi",
-          "path": "tools/pp3qhwqg0gi"
+          "slug": "yansebiaoqianduizhaobiao",
+          "path": "tools/yansebiaoqianduizhaobiao"
         },
         {
           "title": "触发流程",
-          "slug": "pp1frwjc5hi",
-          "path": "tools/pp1frwjc5hi"
+          "slug": "chufaliucheng",
+          "path": "tools/chufaliucheng"
         }
       ]
     },
@@ -1063,40 +1063,40 @@
       "children": [
         {
           "title": "5、从武帝到武神",
-          "slug": "pfljywx4lwi",
-          "path": "legacy/pfljywx4lwi",
+          "slug": "5congwudidaowushen",
+          "path": "legacy/5congwudidaowushen",
           "children": [
             {
               "title": "武帝前期",
-              "slug": "puz53w1ilxi",
-              "path": "legacy/pfljywx4lwi/puz53w1ilxi"
+              "slug": "wudiqianqi",
+              "path": "legacy/5congwudidaowushen/wudiqianqi"
             },
             {
               "title": "武帝中期",
-              "slug": "pvxdpwnirsi",
-              "path": "legacy/pfljywx4lwi/pvxdpwnirsi"
+              "slug": "wudizhongqi",
+              "path": "legacy/5congwudidaowushen/wudizhongqi"
             },
             {
               "title": "武帝后期",
-              "slug": "piflqwicebi",
-              "path": "legacy/pfljywx4lwi/piflqwicebi"
+              "slug": "wudihouqi",
+              "path": "legacy/5congwudidaowushen/wudihouqi"
             }
           ]
         },
         {
           "title": "6、武神",
-          "slug": "pc1kvwy6f4i",
-          "path": "legacy/pc1kvwy6f4i",
+          "slug": "6wushen",
+          "path": "legacy/6wushen",
           "children": [
             {
               "title": "推演技巧",
-              "slug": "pwkjzwkroui",
-              "path": "legacy/pc1kvwy6f4i/pwkjzwkroui"
+              "slug": "tuiyanjiqiao",
+              "path": "legacy/6wushen/tuiyanjiqiao"
             },
             {
               "title": "刀典（熊猫流）",
-              "slug": "pnrmtwalmri",
-              "path": "legacy/pc1kvwy6f4i/pnrmtwalmri"
+              "slug": "daodianxiongmaoliu",
+              "path": "legacy/6wushen/daodianxiongmaoliu"
             }
           ]
         }
@@ -1109,8 +1109,8 @@
       "children": [
         {
           "title": "更新动态",
-          "slug": "pulahww5tsi",
-          "path": "feedback/pulahww5tsi"
+          "slug": "gengxindongtai",
+          "path": "feedback/gengxindongtai"
         }
       ]
     }
