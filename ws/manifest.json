@@ -463,394 +463,394 @@
     },
     {
       "title": "门派攻略",
-      "slug": "sect",
-      "path": "sect/index",
+      "slug": "family",
+      "path": "family/index",
       "children": [
         {
           "title": "门派拜师条件",
           "slug": "menpaibaishitiaojian",
-          "path": "sect/menpaibaishitiaojian"
+          "path": "family/menpaibaishitiaojian"
         },
         {
           "title": "野路子",
           "slug": "yeluzi",
-          "path": "sect/yeluzi",
+          "path": "family/yeluzi",
           "children": [
             {
               "title": "【逍遥】初期混紫、橙",
               "slug": "xiaoyaochuqihunzicheng",
-              "path": "sect/yeluzi/xiaoyaochuqihunzicheng"
+              "path": "family/yeluzi/xiaoyaochuqihunzicheng"
             },
             {
               "title": "【通用】鱼竿换玄晶",
               "slug": "tongyongyuganhuanxuanjing",
-              "path": "sect/yeluzi/tongyongyuganhuanxuanjing"
+              "path": "family/yeluzi/tongyongyuganhuanxuanjing"
             }
           ]
         },
         {
           "title": "武当（武圣后到困禅完整攻略）",
           "slug": "wudangwushenghoudaokunchanwanzhenggonglve",
-          "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve",
+          "path": "family/wudangwushenghoudaokunchanwanzhenggonglve",
           "children": [
             {
               "title": "【塔】60-69",
               "slug": "ta6069",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta6069"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/ta6069"
             },
             {
               "title": "【塔】70-79",
               "slug": "ta7079",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta7079"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/ta7079"
             },
             {
               "title": "【塔】80-89",
               "slug": "ta8089",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta8089"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/ta8089"
             },
             {
               "title": "【塔】90-99",
               "slug": "ta9099",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta9099"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/ta9099"
             },
             {
               "title": "【塔】100层无缝要求",
               "slug": "ta100cengwufengyaoqiu",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/ta100cengwufengyaoqiu"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/ta100cengwufengyaoqiu"
             },
             {
               "title": "【燕子坞】",
               "slug": "yanziwu",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/yanziwu"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/yanziwu"
             },
             {
               "title": "【黑木崖】",
               "slug": "heimuya-2",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/heimuya-2"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/heimuya-2"
             },
             {
               "title": "【缥缈峰】",
               "slug": "piaomiaofeng-2",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/piaomiaofeng-2"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/piaomiaofeng-2"
             },
             {
               "title": "【光明顶】没攻略，组队去",
               "slug": "guangmingdingmeigonglvezuduiqu",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/guangmingdingmeigonglvezuduiqu"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/guangmingdingmeigonglvezuduiqu"
             },
             {
               "title": "【天龙寺】",
               "slug": "tianlongsi-2",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/tianlongsi-2"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/tianlongsi-2"
             },
             {
               "title": "【血刀门】",
               "slug": "xuedaomen-2",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/xuedaomen-2"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/xuedaomen-2"
             },
             {
               "title": "【古墓派】",
               "slug": "gumupai-2",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/gumupai-2"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/gumupai-2"
             },
             {
               "title": "【华山论剑】",
               "slug": "huashanlunjian-2",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/huashanlunjian-2"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/huashanlunjian-2"
             },
             {
               "title": "【困难净念禅宗】四种攻略",
               "slug": "kunnanjingnianchanzongsizhonggonglve",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/kunnanjingnianchanzongsizhonggonglve"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/kunnanjingnianchanzongsizhonggonglve"
             },
             {
               "title": "【圆月弯刀】100%攻略（附小楼面板）",
               "slug": "yuanyuewandao100gonglvefuxiaoloumianban",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/yuanyuewandao100gonglvefuxiaoloumianban"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/yuanyuewandao100gonglvefuxiaoloumianban"
             },
             {
               "title": "【旧版武道进阶】武当进阶",
               "slug": "jiubanwudaojinjiewudangjinjie",
-              "path": "sect/wudangwushenghoudaokunchanwanzhenggonglve/jiubanwudaojinjiewudangjinjie"
+              "path": "family/wudangwushenghoudaokunchanwanzhenggonglve/jiubanwudaojinjiewudangjinjie"
             }
           ]
         },
         {
           "title": "少林",
           "slug": "shaolin",
-          "path": "sect/shaolin",
+          "path": "family/shaolin",
           "children": [
             {
               "title": "【武道】70-79",
               "slug": "wudao7079",
-              "path": "sect/shaolin/wudao7079"
+              "path": "family/shaolin/wudao7079"
             },
             {
               "title": "【庄府-衡山】副本攻略",
               "slug": "zhuangfuhengshanfubengonglve",
-              "path": "sect/shaolin/zhuangfuhengshanfubengonglve"
+              "path": "family/shaolin/zhuangfuhengshanfubengonglve"
             },
             {
               "title": "【缥缈峰】普通",
               "slug": "piaomiaofengputong",
-              "path": "sect/shaolin/piaomiaofengputong"
+              "path": "family/shaolin/piaomiaofengputong"
             },
             {
               "title": "【困禅】",
               "slug": "kunchan",
-              "path": "sect/shaolin/kunchan"
+              "path": "family/shaolin/kunchan"
             }
           ]
         },
         {
           "title": "华山",
           "slug": "huashan",
-          "path": "sect/huashan",
+          "path": "family/huashan",
           "children": [
             {
               "title": "【嵩山】牢华山嵩山",
               "slug": "songshanlaohuashansongshan",
-              "path": "sect/huashan/songshanlaohuashansongshan"
+              "path": "family/huashan/songshanlaohuashansongshan"
             },
             {
               "title": "【药王谷】华山过药王谷残魂攻略",
               "slug": "yaowangguhuashanguoyaowanggucanhungonglve",
-              "path": "sect/huashan/yaowangguhuashanguoyaowanggucanhungonglve"
+              "path": "family/huashan/yaowangguhuashanguoyaowanggucanhungonglve"
             }
           ]
         },
         {
           "title": "峨眉",
           "slug": "emei",
-          "path": "sect/emei",
+          "path": "family/emei",
           "children": [
             {
               "title": "【武道】70",
               "slug": "wudao70",
-              "path": "sect/emei/wudao70"
+              "path": "family/emei/wudao70"
             },
             {
               "title": "【武道】100",
               "slug": "wudao100",
-              "path": "sect/emei/wudao100"
+              "path": "family/emei/wudao100"
             },
             {
               "title": "【蜀山】",
               "slug": "shushan-2",
-              "path": "sect/emei/shushan-2"
+              "path": "family/emei/shushan-2"
             },
             {
               "title": "【蜀山】酒剑仙",
               "slug": "shushanjiujianxian",
-              "path": "sect/emei/shushanjiujianxian"
+              "path": "family/emei/shushanjiujianxian"
             },
             {
               "title": "【黑木崖】黑木崖",
               "slug": "heimuyaheimuya",
-              "path": "sect/emei/heimuyaheimuya"
+              "path": "family/emei/heimuyaheimuya"
             },
             {
               "title": "【血刀门】无斗转",
               "slug": "xuedaomenwudouzhuan",
-              "path": "sect/emei/xuedaomenwudouzhuan"
+              "path": "family/emei/xuedaomenwudouzhuan"
             },
             {
               "title": "【古墓】普通古墓",
               "slug": "gumuputonggumu",
-              "path": "sect/emei/gumuputonggumu"
+              "path": "family/emei/gumuputonggumu"
             },
             {
               "title": "【忘忧谷】小楼",
               "slug": "wangyouguxiaolou",
-              "path": "sect/emei/wangyouguxiaolou"
+              "path": "family/emei/wangyouguxiaolou"
             },
             {
               "title": "【蜀山】邪剑仙",
               "slug": "shushanxiejianxian",
-              "path": "sect/emei/shushanxiejianxian"
+              "path": "family/emei/shushanxiejianxian"
             }
           ]
         },
         {
           "title": "逍遥",
           "slug": "xiaoyao",
-          "path": "sect/xiaoyao",
+          "path": "family/xiaoyao",
           "children": [
             {
               "title": "【纪】门派故事",
               "slug": "jimenpaigushi",
-              "path": "sect/xiaoyao/jimenpaigushi"
+              "path": "family/xiaoyao/jimenpaigushi"
             },
             {
               "title": "【纪】仙侠传承、自在逍遥",
               "slug": "jixianxiachuanchengzizaixiaoyao",
-              "path": "sect/xiaoyao/jixianxiachuanchengzizaixiaoyao"
+              "path": "family/xiaoyao/jixianxiachuanchengzizaixiaoyao"
             },
             {
               "title": "【武道】60-79",
               "slug": "wudao6079",
-              "path": "sect/xiaoyao/wudao6079"
+              "path": "family/xiaoyao/wudao6079"
             },
             {
               "title": "【武道】80-89",
               "slug": "wudao8089",
-              "path": "sect/xiaoyao/wudao8089"
+              "path": "family/xiaoyao/wudao8089"
             },
             {
               "title": "【武道】90",
               "slug": "wudao90",
-              "path": "sect/xiaoyao/wudao90"
+              "path": "family/xiaoyao/wudao90"
             },
             {
               "title": "【药王谷】杀人线残魂",
               "slug": "yaowanggusharenxiancanhun",
-              "path": "sect/xiaoyao/yaowanggusharenxiancanhun"
+              "path": "family/xiaoyao/yaowanggusharenxiancanhun"
             },
             {
               "title": "【蜀山】",
               "slug": "shushan-3",
-              "path": "sect/xiaoyao/shushan-3"
+              "path": "family/xiaoyao/shushan-3"
             },
             {
               "title": "【移花宫】削弱后移花攻略",
               "slug": "yihuagongxueruohouyihuagonglve",
-              "path": "sect/xiaoyao/yihuagongxueruohouyihuagonglve"
+              "path": "family/xiaoyao/yihuagongxueruohouyihuagonglve"
             },
             {
               "title": "【燕子坞】缠夺魄",
               "slug": "yanziwuchanduopo",
-              "path": "sect/xiaoyao/yanziwuchanduopo"
+              "path": "family/xiaoyao/yanziwuchanduopo"
             },
             {
               "title": "【黑木崖】暴力流",
               "slug": "heimuyabaoliliu",
-              "path": "sect/xiaoyao/heimuyabaoliliu"
+              "path": "family/xiaoyao/heimuyabaoliliu"
             },
             {
               "title": "【缥缈峰】困难飘渺李秋水打法与思路",
               "slug": "piaomiaofengkunnanpiaomiaoliqiushuidafayusilu",
-              "path": "sect/xiaoyao/piaomiaofengkunnanpiaomiaoliqiushuidafayusilu"
+              "path": "family/xiaoyao/piaomiaofengkunnanpiaomiaoliqiushuidafayusilu"
             },
             {
               "title": "【缥缈峰】超极限无缝困难缥缈攻略",
               "slug": "piaomiaofengchaojixianwufengkunnanpiaomiaogonglve",
-              "path": "sect/xiaoyao/piaomiaofengchaojixianwufengkunnanpiaomiaogonglve"
+              "path": "family/xiaoyao/piaomiaofengchaojixianwufengkunnanpiaomiaogonglve"
             },
             {
               "title": "【光明顶】组队吧",
               "slug": "guangmingdingzuduiba",
-              "path": "sect/xiaoyao/guangmingdingzuduiba"
+              "path": "family/xiaoyao/guangmingdingzuduiba"
             },
             {
               "title": "【天龙寺】困难天龙",
               "slug": "tianlongsikunnantianlong",
-              "path": "sect/xiaoyao/tianlongsikunnantianlong"
+              "path": "family/xiaoyao/tianlongsikunnantianlong"
             },
             {
               "title": "【血刀门】血刀门高配无缝打法",
               "slug": "xuedaomenxuedaomengaopeiwufengdafa",
-              "path": "sect/xiaoyao/xuedaomenxuedaomengaopeiwufengdafa"
+              "path": "family/xiaoyao/xuedaomenxuedaomengaopeiwufengdafa"
             },
             {
               "title": "【血刀门】邪修",
               "slug": "xuedaomenxiexiu",
-              "path": "sect/xiaoyao/xuedaomenxiexiu"
+              "path": "family/xiaoyao/xuedaomenxiexiu"
             },
             {
               "title": "【古墓派】低配版普通思路",
               "slug": "gumupaidipeibanputongsilu",
-              "path": "sect/xiaoyao/gumupaidipeibanputongsilu"
+              "path": "family/xiaoyao/gumupaidipeibanputongsilu"
             },
             {
               "title": "【华山论剑】缠夺魄",
               "slug": "huashanlunjianchanduopo",
-              "path": "sect/xiaoyao/huashanlunjianchanduopo"
+              "path": "family/xiaoyao/huashanlunjianchanduopo"
             },
             {
               "title": "【困禅】",
               "slug": "kunchan-2",
-              "path": "sect/xiaoyao/kunchan-2"
+              "path": "family/xiaoyao/kunchan-2"
             }
           ]
         },
         {
           "title": "丐帮",
           "slug": "gaibang",
-          "path": "sect/gaibang",
+          "path": "family/gaibang",
           "children": [
             {
               "title": "【武道】80",
               "slug": "wudao80",
-              "path": "sect/gaibang/wudao80"
+              "path": "family/gaibang/wudao80"
             },
             {
               "title": "【武道】100-103",
               "slug": "wudao100103",
-              "path": "sect/gaibang/wudao100103"
+              "path": "family/gaibang/wudao100103"
             },
             {
               "title": "【武道进阶】规划",
               "slug": "wudaojinjieguihua",
-              "path": "sect/gaibang/wudaojinjieguihua"
+              "path": "family/gaibang/wudaojinjieguihua"
             },
             {
               "title": "【药王谷】暴打残魂",
               "slug": "yaowanggubaodacanhun",
-              "path": "sect/gaibang/yaowanggubaodacanhun"
+              "path": "family/gaibang/yaowanggubaodacanhun"
             },
             {
               "title": "【天龙寺】困难天龙",
               "slug": "tianlongsikunnantianlong-2",
-              "path": "sect/gaibang/tianlongsikunnantianlong-2"
+              "path": "family/gaibang/tianlongsikunnantianlong-2"
             },
             {
               "title": "【蜀山】搞笑通过",
               "slug": "shushangaoxiaotongguo",
-              "path": "sect/gaibang/shushangaoxiaotongguo"
+              "path": "family/gaibang/shushangaoxiaotongguo"
             }
           ]
         },
         {
           "title": "杀手",
           "slug": "shashou",
-          "path": "sect/shashou",
+          "path": "family/shashou",
           "children": [
             {
               "title": "【温府-泰山】",
               "slug": "wenfutaishan",
-              "path": "sect/shashou/wenfutaishan"
+              "path": "family/shashou/wenfutaishan"
             },
             {
               "title": "【血刀门】血刀",
               "slug": "xuedaomenxuedao",
-              "path": "sect/shashou/xuedaomenxuedao"
+              "path": "family/shashou/xuedaomenxuedao"
             },
             {
               "title": "【缥缈峰】普通",
               "slug": "piaomiaofengputong-2",
-              "path": "sect/shashou/piaomiaofengputong-2"
+              "path": "family/shashou/piaomiaofengputong-2"
             },
             {
               "title": "【净念禅宗】困难",
               "slug": "jingnianchanzongkunnan",
-              "path": "sect/shashou/jingnianchanzongkunnan"
+              "path": "family/shashou/jingnianchanzongkunnan"
             },
             {
               "title": "【慈航静斋】困难",
               "slug": "cihangjingzhaikunnan",
-              "path": "sect/shashou/cihangjingzhaikunnan"
+              "path": "family/shashou/cihangjingzhaikunnan"
             },
             {
               "title": "【蜀山】",
               "slug": "shushan-4",
-              "path": "sect/shashou/shushan-4"
+              "path": "family/shashou/shushan-4"
             }
           ]
         },
         {
           "title": "散人",
           "slug": "sanren",
-          "path": "sect/sanren"
+          "path": "family/sanren"
         }
       ]
     },
