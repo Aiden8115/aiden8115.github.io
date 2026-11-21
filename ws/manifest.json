@@ -884,26 +884,19 @@
       "path": "martial/index",
       "children": [
         {
-          "title": "基础武学资料",
-          "slug": "jichuwuxueziliao",
-          "path": "martial/jichuwuxueziliao",
-          "children": [
-            {
-              "title": "武学等级与评价",
-              "slug": "wuxuedengjiyupingjia",
-              "path": "martial/jichuwuxueziliao/wuxuedengjiyupingjia"
-            },
-            {
-              "title": "武学进阶",
-              "slug": "wuxuejinjie",
-              "path": "martial/jichuwuxueziliao/wuxuejinjie"
-            },
-            {
-              "title": "武学技能强化",
-              "slug": "wuxuejinengqianghua",
-              "path": "martial/jichuwuxueziliao/wuxuejinengqianghua"
-            }
-          ]
+          "title": "武学等级与评价",
+          "slug": "wuxuedengjiyupingjia",
+          "path": "martial/wuxuedengjiyupingjia"
+        },
+        {
+          "title": "武学进阶",
+          "slug": "wuxuejinjie",
+          "path": "martial/wuxuejinjie"
+        },
+        {
+          "title": "武学技能强化",
+          "slug": "wuxuejinengqianghua",
+          "path": "martial/wuxuejinengqianghua"
         }
       ]
     },
