@@ -2,8 +2,22 @@
   "title": "WSMUD2 攻略",
   "nav": [
     {
-      "title": "武神MUD2手册",
-      "slug": "home"
+      "title": "武神mud2手册",
+      "slug": "home",
+      "children": [
+        {
+          "title": "游戏介绍",
+          "slug": "pibfjwzzpji"
+        },
+        {
+          "title": "武神2更新公告合集",
+          "slug": "phg3rw6zyui"
+        },
+        {
+          "title": "梗百科",
+          "slug": "pqvldwbo51i"
+        }
+      ]
     },
     {
       "title": "晋升之道",
@@ -23,19 +37,67 @@
         },
         {
           "title": "4、从武圣到武帝",
-          "slug": "rank4"
+          "slug": "rank4",
+          "children": [
+            {
+              "title": "【药帝】虚竹2.9",
+              "slug": "pn9qxwabp6i"
+            },
+            {
+              "title": "进阶记录",
+              "slug": "pxmppwuzowi"
+            },
+            {
+              "title": "大佬进阶记录",
+              "slug": "pez4dwxjati"
+            }
+          ]
         },
         {
           "title": "5、从武帝到武神",
-          "slug": "rank5"
+          "slug": "rank5",
+          "children": [
+            {
+              "title": "前期",
+              "slug": "pfqbiwuf1yi"
+            }
+          ]
         },
         {
           "title": "属性机理",
-          "slug": "stats"
+          "slug": "stats",
+          "children": [
+            {
+              "title": "基础属性",
+              "slug": "pnuibwpcvoi"
+            },
+            {
+              "title": "出手速度原理计算与举例",
+              "slug": "pg0aiwucxzi"
+            }
+          ]
         },
         {
           "title": "挂机",
-          "slug": "idle"
+          "slug": "idle",
+          "children": [
+            {
+              "title": "挖矿",
+              "slug": "pkc3lwoxdhi"
+            },
+            {
+              "title": "钓鱼",
+              "slug": "prkdrwtr9zi"
+            },
+            {
+              "title": "采药",
+              "slug": "pig9ewcneli"
+            },
+            {
+              "title": "闭关",
+              "slug": "po09twihrzi"
+            }
+          ]
         },
         {
           "title": "扬州城",
@@ -54,19 +116,19 @@
           "slug": "shop"
         },
         {
-          "title": "公共活动 · BOSS挑战",
+          "title": "公共活动-BOSS挑战",
           "slug": "boss"
         },
         {
-          "title": "公共活动 · 门派战",
+          "title": "公共活动-门派战",
           "slug": "sectwar"
         },
         {
-          "title": "公共活动 · 襄阳",
+          "title": "公共活动-襄阳",
           "slug": "xiangyang"
         },
         {
-          "title": "公共活动 · 其他",
+          "title": "公共活动-其他",
           "slug": "activities"
         },
         {
@@ -85,35 +147,387 @@
     },
     {
       "title": "副本",
-      "slug": "dungeon"
+      "slug": "dungeon",
+      "children": [
+        {
+          "title": "树林",
+          "slug": "pe77nwh1mki"
+        },
+        {
+          "title": "财主府",
+          "slug": "pumwgwmompi"
+        },
+        {
+          "title": "流氓巷",
+          "slug": "ppuwuwlyuui"
+        },
+        {
+          "title": "丽春院",
+          "slug": "prhoyw78dgi"
+        },
+        {
+          "title": "兵营",
+          "slug": "piolcwexupi"
+        },
+        {
+          "title": "庄府",
+          "slug": "pi1n3wtgigi"
+        },
+        {
+          "title": "鳌拜府",
+          "slug": "pevnnwvkvmi"
+        },
+        {
+          "title": "天地会",
+          "slug": "pmsdswzawwi"
+        },
+        {
+          "title": "神龙教",
+          "slug": "pqdpvwbyl8i"
+        },
+        {
+          "title": "关外",
+          "slug": "pmdoowar59i"
+        },
+        {
+          "title": "温府（宗师初期卡关）",
+          "slug": "pnfxnw41e0i"
+        },
+        {
+          "title": "五毒教",
+          "slug": "pnavzwvnaui"
+        },
+        {
+          "title": "恒山",
+          "slug": "pjaqmwpligi"
+        },
+        {
+          "title": "青城山",
+          "slug": "pjm7swr81fi"
+        },
+        {
+          "title": "衡山",
+          "slug": "pj8ygwce9yi"
+        },
+        {
+          "title": "泰山",
+          "slug": "pqwftwebmxi"
+        },
+        {
+          "title": "嵩山",
+          "slug": "pyf7ywan8di"
+        },
+        {
+          "title": "云梦沼泽",
+          "slug": "pvclbwt5fwi"
+        },
+        {
+          "title": "桃花岛",
+          "slug": "pq3mswtwaei"
+        },
+        {
+          "title": "白驼山",
+          "slug": "ptvacwzjoki"
+        },
+        {
+          "title": "星宿海",
+          "slug": "pvuuyw3xi1i"
+        },
+        {
+          "title": "冰火岛",
+          "slug": "pnwrewf8gvi"
+        },
+        {
+          "title": "移花宫",
+          "slug": "pltrzwatg9i"
+        },
+        {
+          "title": "燕子坞（武圣初期卡关）",
+          "slug": "pmk1lwfoqmi"
+        },
+        {
+          "title": "黑木崖",
+          "slug": "paaqvw1hqgi"
+        },
+        {
+          "title": "缥缈峰",
+          "slug": "ppk6mwrkyoi"
+        },
+        {
+          "title": "光明顶",
+          "slug": "pzdlbwhycui"
+        },
+        {
+          "title": "天龙寺",
+          "slug": "phrpowiunbi"
+        },
+        {
+          "title": "血刀门",
+          "slug": "pdip1wrfcmi"
+        },
+        {
+          "title": "古墓派",
+          "slug": "ponbmwgriji"
+        },
+        {
+          "title": "华山论剑",
+          "slug": "pery0wt1bki"
+        },
+        {
+          "title": "侠客岛",
+          "slug": "pnfknwy24mi"
+        },
+        {
+          "title": "净念禅宗",
+          "slug": "pzehrwgz3gi"
+        },
+        {
+          "title": "慈航静斋",
+          "slug": "peltzwm3wki"
+        },
+        {
+          "title": "阴阳谷",
+          "slug": "pumacwqtisi"
+        },
+        {
+          "title": "战神殿",
+          "slug": "pgy1cwxhgti"
+        }
+      ]
     },
     {
       "title": "禁地副本",
-      "slug": "forbidden"
+      "slug": "forbidden",
+      "children": [
+        {
+          "title": "黑鹰校场",
+          "slug": "phusiwi2qui"
+        },
+        {
+          "title": "皇城",
+          "slug": "pcwtywjjt3i"
+        },
+        {
+          "title": "龙脉",
+          "slug": "pbo7iwvj1ri"
+        },
+        {
+          "title": "蓬莱岛",
+          "slug": "paxmawskesi"
+        },
+        {
+          "title": "梅庄",
+          "slug": "ph4jowzntai"
+        },
+        {
+          "title": "忘忧谷",
+          "slug": "pp3swwfibvi"
+        },
+        {
+          "title": "药王谷",
+          "slug": "pm2nbwc2kri"
+        },
+        {
+          "title": "蜀山",
+          "slug": "pggmmwsigti"
+        }
+      ]
     },
     {
       "title": "门派攻略",
-      "slug": "sect"
+      "slug": "sect",
+      "children": [
+        {
+          "title": "门派拜师条件",
+          "slug": "prho6wl9zhi"
+        },
+        {
+          "title": "野路子",
+          "slug": "ptb7jws5rfi",
+          "children": [
+            {
+              "title": "【逍遥】初期混紫、橙",
+              "slug": "pzfyawoxf9i"
+            },
+            {
+              "title": "【通用】鱼竿换玄晶",
+              "slug": "pzg8mwoszhi"
+            }
+          ]
+        },
+        {
+          "title": "武当（武圣后到困禅完整攻略）",
+          "slug": "pvxk1w2e1ki"
+        },
+        {
+          "title": "少林",
+          "slug": "pszpqwwu29i"
+        },
+        {
+          "title": "华山",
+          "slug": "peuk3wbjtyi",
+          "children": [
+            {
+              "title": "【嵩山】牢华山嵩山",
+              "slug": "pvrs3w2auii"
+            },
+            {
+              "title": "【药王谷】华山过药王谷残魂攻略",
+              "slug": "prcndw1xxti"
+            }
+          ]
+        },
+        {
+          "title": "峨眉",
+          "slug": "prbufwuolti"
+        },
+        {
+          "title": "逍遥",
+          "slug": "ppsrww0vnni"
+        },
+        {
+          "title": "丐帮",
+          "slug": "psnr0wo6jzi"
+        },
+        {
+          "title": "杀手",
+          "slug": "pqdt2wlpmui"
+        },
+        {
+          "title": "散人",
+          "slug": "pl6huwm7sxi"
+        }
+      ]
     },
     {
       "title": "武道塔",
-      "slug": "tower"
+      "slug": "tower",
+      "children": [
+        {
+          "title": "武道塔技能浏览",
+          "slug": "penc5wlwlki"
+        }
+      ]
     },
     {
       "title": "帮派",
-      "slug": "gang"
+      "slug": "gang",
+      "children": [
+        {
+          "title": "禁地-绿柳山庄（已关闭）",
+          "slug": "paj5tw5h4di"
+        }
+      ]
     },
     {
       "title": "武学",
-      "slug": "martial"
+      "slug": "martial",
+      "children": [
+        {
+          "title": "基础武学资料",
+          "slug": "pvsevwmtyxi",
+          "children": [
+            {
+              "title": "武学等级与评价",
+              "slug": "puvjkwg5pki"
+            },
+            {
+              "title": "武学进阶",
+              "slug": "pxxhdw6kh5i"
+            },
+            {
+              "title": "武学技能强化",
+              "slug": "ptesvw7rzti"
+            }
+          ]
+        }
+      ]
     },
     {
       "title": "装备",
-      "slug": "equipment"
+      "slug": "equipment",
+      "children": [
+        {
+          "title": "基础装备资料",
+          "slug": "poowtwfbfsi",
+          "children": [
+            {
+              "title": "白色",
+              "slug": "psyxew6sqri"
+            },
+            {
+              "title": "绿色",
+              "slug": "peigyw22t8i"
+            },
+            {
+              "title": "蓝色",
+              "slug": "pn5fjwoyfui"
+            },
+            {
+              "title": "黄色",
+              "slug": "pvtiwwqlwti"
+            },
+            {
+              "title": "紫色",
+              "slug": "pez90wmk4ci"
+            },
+            {
+              "title": "橙色",
+              "slug": "pw6s5wywbci"
+            },
+            {
+              "title": "红色",
+              "slug": "phhdtwaiezi"
+            }
+          ]
+        },
+        {
+          "title": "门派装备",
+          "slug": "pc5zrwc90ii",
+          "children": [
+            {
+              "title": "焚诀：橙装百分比属性的可视化",
+              "slug": "pxjldwl76ji"
+            }
+          ]
+        },
+        {
+          "title": "宝石和精炼",
+          "slug": "ppc0dwo3c2i"
+        },
+        {
+          "title": "悟性学习打坐套",
+          "slug": "pcxv3wgoshi"
+        },
+        {
+          "title": "拍卖行装备",
+          "slug": "pgx2qwlcaji"
+        },
+        {
+          "title": "装备自制",
+          "slug": "pgqhswnsphi",
+          "children": [
+            {
+              "title": "装备自制",
+              "slug": "pv5i1wu8t1i"
+            },
+            {
+              "title": "装备自制",
+              "slug": "pm3exwjhlfi"
+            }
+          ]
+        }
+      ]
     },
     {
       "title": "丹方",
-      "slug": "recipes"
+      "slug": "recipes",
+      "children": [
+        {
+          "title": "丹方",
+          "slug": "puvoqwurnii"
+        }
+      ]
     },
     {
       "title": "随从",
@@ -121,11 +535,83 @@
     },
     {
       "title": "扩展使用教程",
-      "slug": "extended"
+      "slug": "extended",
+      "children": [
+        {
+          "title": "使用教程",
+          "slug": "pjx7jwihaji"
+        },
+        {
+          "title": "触发器扩展教程",
+          "slug": "pnhspwybumi"
+        }
+      ]
     },
     {
       "title": "工具",
-      "slug": "tools"
+      "slug": "tools",
+      "children": [
+        {
+          "title": "APP",
+          "slug": "pfy3ewrfxni"
+        },
+        {
+          "title": "颜色标签对照表",
+          "slug": "pp3qhwqg0gi"
+        },
+        {
+          "title": "触发流程",
+          "slug": "pp1frwjc5hi"
+        }
+      ]
+    },
+    {
+      "title": "旧版本攻略（参考）",
+      "slug": "pdaorwfvbri",
+      "children": [
+        {
+          "title": "5、从武帝到武神",
+          "slug": "pfljywx4lwi",
+          "children": [
+            {
+              "title": "武帝前期",
+              "slug": "puz53w1ilxi"
+            },
+            {
+              "title": "武帝中期",
+              "slug": "pvxdpwnirsi"
+            },
+            {
+              "title": "武帝后期",
+              "slug": "piflqwicebi"
+            }
+          ]
+        },
+        {
+          "title": "6、武神",
+          "slug": "pc1kvwy6f4i",
+          "children": [
+            {
+              "title": "推演技巧",
+              "slug": "pwkjzwkroui"
+            },
+            {
+              "title": "刀典（熊猫流）",
+              "slug": "pnrmtwalmri"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "提个需求吧",
+      "slug": "prkhbwhbboi",
+      "children": [
+        {
+          "title": "更新动态",
+          "slug": "pulahww5tsi"
+        }
+      ]
     }
   ]
 }

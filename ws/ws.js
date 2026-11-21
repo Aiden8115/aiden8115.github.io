@@ -1,4 +1,4 @@
-/* ===== WSMUD2 攻略 · 目录 + 按需加载 ===== */
+/* ===== WSMUD2 攻略 · 多级目录 + 按需加载 ===== */
 (function () {
     const navEl = document.getElementById('ws-nav');
     const contentEl = document.getElementById('ws-content');
@@ -6,7 +6,7 @@
     const eyebrowEl = document.getElementById('ws-eyebrow');
 
     const cache = new Map();
-    const meta = new Map(); // slug -> { title, group }
+    const meta = new Map(); // slug -> { title, group, link }
     let loadSeq = 0;
     let currentSlug = null;
 
@@ -17,39 +17,66 @@
         return raw || 'home';
     }
 
-    function buildNav(nav) {
-        const frag = document.createDocumentFragment();
-        nav.forEach(function (entry) {
-            const item = document.createElement('a');
-            item.className = 'ws-nav-item';
-            item.href = '#/' + entry.slug;
-            item.dataset.slug = entry.slug;
-            item.textContent = entry.title;
-            meta.set(entry.slug, { title: entry.title, group: '武神MUD2手册' });
+    function buildLevel(entries, container, groupTitle) {
+        entries.forEach(function (entry) {
+            const node = document.createElement('div');
+            node.className = 'ws-nav-entry';
 
             if (entry.children && entry.children.length) {
-                const group = document.createElement('div');
-                group.className = 'ws-nav-group';
-                group.appendChild(item);
+                const toggle = document.createElement('button');
+                toggle.type = 'button';
+                toggle.className = 'ws-nav-toggle';
+                toggle.setAttribute('aria-label', '展开或收起 ' + entry.title);
+                toggle.textContent = '▾';
+                toggle.addEventListener('click', function () {
+                    node.classList.toggle('is-collapsed');
+                    toggle.textContent = node.classList.contains('is-collapsed') ? '▸' : '▾';
+                });
+                node.appendChild(toggle);
+            } else {
+                const spacer = document.createElement('span');
+                spacer.className = 'ws-nav-spacer';
+                node.appendChild(spacer);
+            }
+
+            const link = document.createElement('a');
+            link.className = 'ws-nav-item';
+            link.href = '#/' + entry.slug;
+            link.dataset.slug = entry.slug;
+            link.textContent = entry.title;
+            node.appendChild(link);
+            meta.set(entry.slug, { title: entry.title, group: groupTitle, link: link });
+
+            if (entry.children && entry.children.length) {
                 const children = document.createElement('div');
                 children.className = 'ws-nav-children';
-                entry.children.forEach(function (child) {
-                    const link = document.createElement('a');
-                    link.className = 'ws-nav-item';
-                    link.href = '#/' + child.slug;
-                    link.dataset.slug = child.slug;
-                    link.textContent = child.title;
-                    children.appendChild(link);
-                    meta.set(child.slug, { title: child.title, group: entry.title });
-                });
-                group.appendChild(children);
-                frag.appendChild(group);
-            } else {
-                frag.appendChild(item);
+                buildLevel(entry.children, children, groupTitle);
+                node.appendChild(children);
             }
+
+            container.appendChild(node);
         });
+    }
+
+    function buildNav(nav) {
         navEl.innerHTML = '';
+        const frag = document.createDocumentFragment();
+        buildLevel(nav, frag, null);
         navEl.appendChild(frag);
+        // 顶层分组的眉标使用自身名称，嵌套页使用所属顶层名称
+        nav.forEach(function (entry) {
+            const info = meta.get(entry.slug);
+            if (info) info.group = entry.title;
+            bubbleGroup(entry, entry.title);
+        });
+    }
+
+    function bubbleGroup(entry, groupTitle) {
+        (entry.children || []).forEach(function (child) {
+            const info = meta.get(child.slug);
+            if (info) info.group = groupTitle;
+            bubbleGroup(child, groupTitle);
+        });
     }
 
     function setActive(slug) {
@@ -57,7 +84,21 @@
             el.classList.toggle('is-active', el.dataset.slug === slug);
         });
         const active = navEl.querySelector('.ws-nav-item.is-active');
-        if (active && navEl.scrollHeight > navEl.clientHeight) {
+        if (!active) return;
+
+        // 展开当前章节的所有父级
+        let parent = active.closest('.ws-nav-children');
+        while (parent) {
+            const node = parent.parentElement;
+            if (node && node.classList.contains('is-collapsed')) {
+                node.classList.remove('is-collapsed');
+                const toggle = node.querySelector('.ws-nav-toggle');
+                if (toggle) toggle.textContent = '▾';
+            }
+            parent = node && node.parentElement ? node.parentElement.closest('.ws-nav-children') : null;
+        }
+
+        if (navEl.scrollHeight > navEl.clientHeight) {
             const delta = active.getBoundingClientRect().top - navEl.getBoundingClientRect().top;
             navEl.scrollTop += delta - navEl.clientHeight / 2 + active.clientHeight / 2;
         }
@@ -70,7 +111,7 @@
         setActive(slug);
 
         const info = meta.get(slug);
-        eyebrowEl.textContent = info ? info.group : '武神MUD2手册';
+        eyebrowEl.textContent = info && info.group ? info.group : '武神MUD2手册';
         titleEl.textContent = info ? info.title : 'WSMUD2 攻略';
 
         const cached = cache.get(slug);
@@ -79,7 +120,7 @@
         try {
             let data = cached;
             if (!data) {
-                const res = await fetch('content/' + encodeURIComponent(slug) + '.json', { cache: 'force-cache' });
+                const res = await fetch('content/' + encodeURIComponent(slug) + '.json');
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 data = await res.json();
                 cache.set(slug, data);
@@ -115,10 +156,6 @@
         if (!meta.has(slug)) {
             contentEl.innerHTML = '<div class="ws-error">未找到章节「' + slug.replace(/[<>&"]/g, '') +
                 '」，请从左侧目录选择，或返回 <a href="#/home">手册首页</a>。</div>';
-            if (meta.has('home')) {
-                eyebrowEl.textContent = meta.get('home').group;
-                titleEl.textContent = meta.get('home').title;
-            }
             return;
         }
         loadPage(slug);
