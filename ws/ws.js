@@ -29,6 +29,8 @@
             node.className = 'ws-nav-entry';
             const hasChildren = entry.children && entry.children.length;
             const showChildren = hasChildren && !entry.hideChildren;
+            const row = document.createElement('div');
+            row.className = 'ws-nav-row';
 
             if (showChildren) {
                 node.classList.add('is-collapsed');
@@ -40,11 +42,11 @@
                 toggle.addEventListener('click', function () {
                     node.classList.toggle('is-collapsed');
                 });
-                node.appendChild(toggle);
+                row.appendChild(toggle);
             } else {
                 const spacer = document.createElement('span');
                 spacer.className = 'ws-nav-spacer';
-                node.appendChild(spacer);
+                row.appendChild(spacer);
             }
 
             const link = document.createElement('a');
@@ -52,7 +54,8 @@
             link.href = '#/' + entry.slug;
             link.dataset.slug = entry.slug;
             link.textContent = entry.title;
-            node.appendChild(link);
+            row.appendChild(link);
+            node.appendChild(row);
             meta.set(entry.slug, { title: entry.title, group: groupTitle, link: link, path: entry.path });
 
             if (hasChildren) {
@@ -100,7 +103,9 @@
 
     function setActive(slug) {
         navEl.querySelectorAll('.ws-nav-item').forEach(function (el) {
-            el.classList.toggle('is-active', el.dataset.slug === slug);
+            const on = el.dataset.slug === slug;
+            el.classList.toggle('is-active', on);
+            if (el.parentElement) el.parentElement.classList.toggle('is-active', on);
         });
         const active = navEl.querySelector('.ws-nav-item.is-active');
         if (!active) return;
