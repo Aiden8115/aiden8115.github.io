@@ -1,5 +1,33 @@
 /* ===== WSMUD2 攻略 · 多级目录 + 按需加载 ===== */
 (function () {
+    /* 正文里的自定义标签：ws-p 还原为段落，ws-source 还原为页底 */
+    if (!customElements.get('ws-p')) {
+        customElements.define('ws-p', class extends HTMLElement {
+            connectedCallback() {
+                const p = document.createElement('p');
+                p.className = 'ws-p';
+                while (this.firstChild) p.appendChild(this.firstChild);
+                this.replaceWith(p);
+            }
+        });
+    }
+    if (!customElements.get('ws-source')) {
+        customElements.define('ws-source', class extends HTMLElement {
+            connectedCallback() {
+                const p = document.createElement('p');
+                p.className = 'ws-source';
+                p.appendChild(document.createTextNode('内容整理自飞书《武神MUD2手册》· '));
+                const a = document.createElement('a');
+                a.href = this.getAttribute('href') || '';
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.textContent = '查看原文';
+                p.appendChild(a);
+                this.replaceWith(p);
+            }
+        });
+    }
+
     const navEl = document.getElementById('ws-nav');
     const contentEl = document.getElementById('ws-content');
     const titleEl = document.getElementById('ws-doc-title');
