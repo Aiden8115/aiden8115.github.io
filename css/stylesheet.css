@@ -527,7 +527,7 @@ body.page-ws {
     align-items: flex-start;
     gap: 22px;
     width: 100%;
-    max-width: 1320px;
+    max-width: 1620px;
     margin: 0 auto;
 }
 
@@ -535,7 +535,7 @@ body.page-ws {
 .ws-sidebar {
     position: sticky;
     top: 56px;
-    flex: 0 0 250px;
+    flex: 0 0 400px;
     max-height: calc(100vh - 112px);
     display: flex;
     flex-direction: column;
