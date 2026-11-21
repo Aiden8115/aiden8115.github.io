@@ -53,7 +53,7 @@
             link.dataset.slug = entry.slug;
             link.textContent = entry.title;
             node.appendChild(link);
-            meta.set(entry.slug, { title: entry.title, group: groupTitle, link: link });
+            meta.set(entry.slug, { title: entry.title, group: groupTitle, link: link, path: entry.path });
 
             if (hasChildren) {
                 if (showChildren) {
@@ -72,7 +72,7 @@
 
     function registerHidden(entries, groupTitle) {
         entries.forEach(function (entry) {
-            meta.set(entry.slug, { title: entry.title, group: groupTitle, link: null });
+            meta.set(entry.slug, { title: entry.title, group: groupTitle, link: null, path: entry.path });
             if (entry.children && entry.children.length) registerHidden(entry.children, groupTitle);
         });
     }
@@ -138,7 +138,8 @@
         try {
             let html = cached;
             if (!html) {
-                const res = await fetch('content/' + encodeURIComponent(slug) + '.html');
+                const relative = info && info.path ? info.path : slug;
+                const res = await fetch('content/' + relative + '.html');
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 html = await res.text();
                 cache.set(slug, html);
