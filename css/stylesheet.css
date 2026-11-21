@@ -933,6 +933,50 @@ body.ws-bubble-mode.is-menu-open .ws-sidebar {
     box-shadow: 0 8px 24px rgba(0, 229, 255, 0.16);
 }
 
+/* 站内数据表格 */
+.ws-table-wrap {
+    margin: 24px 0 10px;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(4, 10, 20, 0.35);
+}
+.ws-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    line-height: 1.65;
+}
+.ws-table th,
+.ws-table td {
+    padding: 9px 14px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.10);
+}
+.ws-table thead th {
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+    background: rgba(8, 20, 36, 0.96);
+}
+.ws-table tbody tr:hover {
+    background: rgba(0, 229, 255, 0.05);
+}
+.ws-skill-table tbody th {
+    width: 150px;
+    min-width: 110px;
+    color: var(--text);
+    font-weight: 600;
+    white-space: nowrap;
+    border-right: 1px solid rgba(0, 229, 255, 0.10);
+}
+.ws-table-note {
+    margin: 8px 0 0;
+    color: var(--dim);
+    font-size: 12.5px;
+}
+
 .ws-skeleton { display: flex; flex-direction: column; gap: 14px; padding-top: 10px; }
 .ws-skeleton span {
     display: block;
