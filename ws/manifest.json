@@ -293,7 +293,8 @@
           "title": "战神殿",
           "slug": "pgy1cwxhgti"
         }
-      ]
+      ],
+      "hideChildren": true
     },
     {
       "title": "禁地副本",

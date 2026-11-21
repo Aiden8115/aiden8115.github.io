@@ -21,8 +21,10 @@
         entries.forEach(function (entry) {
             const node = document.createElement('div');
             node.className = 'ws-nav-entry';
+            const hasChildren = entry.children && entry.children.length;
+            const showChildren = hasChildren && !entry.hideChildren;
 
-            if (entry.children && entry.children.length) {
+            if (showChildren) {
                 node.classList.add('is-collapsed');
                 const toggle = document.createElement('button');
                 toggle.type = 'button';
@@ -47,14 +49,25 @@
             node.appendChild(link);
             meta.set(entry.slug, { title: entry.title, group: groupTitle, link: link });
 
-            if (entry.children && entry.children.length) {
-                const children = document.createElement('div');
-                children.className = 'ws-nav-children';
-                buildLevel(entry.children, children, groupTitle);
-                node.appendChild(children);
+            if (hasChildren) {
+                if (showChildren) {
+                    const children = document.createElement('div');
+                    children.className = 'ws-nav-children';
+                    buildLevel(entry.children, children, groupTitle);
+                    node.appendChild(children);
+                } else {
+                    registerHidden(entry.children, groupTitle);
+                }
             }
 
             container.appendChild(node);
+        });
+    }
+
+    function registerHidden(entries, groupTitle) {
+        entries.forEach(function (entry) {
+            meta.set(entry.slug, { title: entry.title, group: groupTitle, link: null });
+            if (entry.children && entry.children.length) registerHidden(entry.children, groupTitle);
         });
     }
 
