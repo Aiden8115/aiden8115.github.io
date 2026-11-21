@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>WSMUD2 攻略 · Aiden8115</title>
-        <link rel="icon" href="../aiden8115_skin64.png" type="image/png">
+        <link rel="icon" href="../favicon.png" type="image/png">
         <link rel="apple-touch-icon" href="../apple-touch-icon.png">
         <link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
     </head>
@@ -42,18 +42,30 @@
         <!-- 独立特效层：光标光晕 -->
         <div class="cursor-glow" id="cursor-glow"></div>
 
-        <!-- 主内容面板 -->
-        <!-- 主内容：左侧侧边栏 + 右侧宽内容区 -->
+        <!-- 主内容：左侧目录 + 右侧宽内容区 -->
         <div class="ws-layout">
             <aside class="ws-sidebar">
-                <h2 class="ws-sidebar-title">目录</h2>
-                <p class="ws-sidebar-empty">攻略整理中，章节稍后上线。</p>
-                <a class="btn ws-back" href="../">返回首页</a>
+                <div class="ws-brand">
+                    <span class="ws-brand-title">WSMUD2</span>
+                    <span class="ws-brand-sub">攻略手册</span>
+                </div>
+                <nav class="ws-nav" id="ws-nav" aria-label="攻略目录">
+                    <div class="ws-nav-loading">目录加载中…</div>
+                </nav>
+                <a class="btn" href="../">返回首页</a>
             </aside>
             <main class="panel ws-main">
-                <h1 class="title">WSMUD2</h1>
-                <p class="sub">攻略页面正在整理中，敬请期待。</p>
-                <p class="sub">内容上线后将在此按章节展示，页面会随内容长度向下延伸，可直接滚动阅读。</p>
+                <article class="ws-doc">
+                    <header class="ws-doc-head">
+                        <p class="ws-eyebrow" id="ws-eyebrow">武神MUD2手册</p>
+                        <h1 class="ws-doc-title" id="ws-doc-title">WSMUD2 攻略</h1>
+                    </header>
+                    <div class="ws-content" id="ws-content">
+                        <div class="ws-skeleton" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </article>
             </main>
         </div>
 
@@ -81,5 +93,6 @@
                 requestAnimationFrame(tick);
             })();
         </script>
+        <script src="ws.js"></script>
     </body>
 </html>

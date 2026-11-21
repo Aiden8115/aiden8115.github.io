@@ -1,0 +1,131 @@
+{
+  "title": "WSMUD2 攻略",
+  "nav": [
+    {
+      "title": "武神MUD2手册",
+      "slug": "home"
+    },
+    {
+      "title": "晋升之道",
+      "slug": "promotion",
+      "children": [
+        {
+          "title": "1、起步",
+          "slug": "start"
+        },
+        {
+          "title": "2、从百姓到宗师",
+          "slug": "rank2"
+        },
+        {
+          "title": "3、从宗师到武圣",
+          "slug": "rank3"
+        },
+        {
+          "title": "4、从武圣到武帝",
+          "slug": "rank4"
+        },
+        {
+          "title": "5、从武帝到武神",
+          "slug": "rank5"
+        },
+        {
+          "title": "属性机理",
+          "slug": "stats"
+        },
+        {
+          "title": "挂机",
+          "slug": "idle"
+        },
+        {
+          "title": "扬州城",
+          "slug": "yangzhou"
+        },
+        {
+          "title": "排行系统",
+          "slug": "leaderboard"
+        },
+        {
+          "title": "社交系统",
+          "slug": "social"
+        },
+        {
+          "title": "商城",
+          "slug": "shop"
+        },
+        {
+          "title": "公共活动 · BOSS挑战",
+          "slug": "boss"
+        },
+        {
+          "title": "公共活动 · 门派战",
+          "slug": "sectwar"
+        },
+        {
+          "title": "公共活动 · 襄阳",
+          "slug": "xiangyang"
+        },
+        {
+          "title": "公共活动 · 其他",
+          "slug": "activities"
+        },
+        {
+          "title": "喜宴",
+          "slug": "banquet"
+        },
+        {
+          "title": "世界频道机器人",
+          "slug": "bot"
+        },
+        {
+          "title": "称号获取",
+          "slug": "titles"
+        }
+      ]
+    },
+    {
+      "title": "副本",
+      "slug": "dungeon"
+    },
+    {
+      "title": "禁地副本",
+      "slug": "forbidden"
+    },
+    {
+      "title": "门派攻略",
+      "slug": "sect"
+    },
+    {
+      "title": "武道塔",
+      "slug": "tower"
+    },
+    {
+      "title": "帮派",
+      "slug": "gang"
+    },
+    {
+      "title": "武学",
+      "slug": "martial"
+    },
+    {
+      "title": "装备",
+      "slug": "equipment"
+    },
+    {
+      "title": "丹方",
+      "slug": "recipes"
+    },
+    {
+      "title": "随从",
+      "slug": "followers"
+    },
+    {
+      "title": "扩展使用教程",
+      "slug": "extended"
+    },
+    {
+      "title": "工具",
+      "slug": "tools"
+    }
+  ]
+}
