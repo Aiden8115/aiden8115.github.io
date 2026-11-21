@@ -1,6 +1,0 @@
-{
-  "slug": "pnuibwpcvoi",
-  "title": "基础属性",
-  "html": "<p class=\"ws-p\">臂力</p><p class=\"ws-p\">先天1点=1点攻击+0.5点招架</p><p class=\"ws-p\">后天1点=先天数值÷10的攻击, 先天数值÷10的招架</p><p class=\"ws-p\">身法</p><p class=\"ws-p\">先天1点=0.1暴击+0.5命中+0.5闪避</p><p class=\"ws-p\">后天1点=未测试（只加闪避太垃圾懒得算）</p><p class=\"ws-p\">根骨</p><p class=\"ws-p\">先天1点=5气血（人物初始属性10气血），以及打坐疗伤<span class=\"is-bold\">回复速度。</span></p><p class=\"ws-p\">后天1点=先天数值的气血，先天数值÷10的防御</p><p class=\"ws-p\">悟性</p><p class=\"ws-p\">先天1点=1%学习效率+1%练习效率。</p><p class=\"ws-p\">后天1点=学习/练习时每次消耗的潜能多少。</p><p class=\"ws-p\">先天属性新手期可以是满悟性，后面（有了稳定控制，或者移花之后）洗成身法/臂力。</p><p class=\"ws-p\">忽视防御属性是同时忽视穿透防御和免伤。</p><p class=\"ws-p\">门派战帮派战鼓舞效果不会覆盖刷新。在获得大鼓舞之前，先死亡送掉小鼓舞</p><p class=\"ws-p\">（门派战+20%、帮派橙+50%、帮派红+100%，持续一小时）。</p><p class=\"ws-source\">内容整理自飞书《武神MUD2手册》· <a href=\"https://ucn595zz2fou.feishu.cn/wiki/NuiBwpcVoiHAU6kOK7icG2Fonpe\" target=\"_blank\" rel=\"noopener\">查看原文</a></p>",
-  "source": "https://ucn595zz2fou.feishu.cn/wiki/NuiBwpcVoiHAU6kOK7icG2Fonpe"
-}

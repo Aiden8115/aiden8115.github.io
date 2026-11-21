@@ -23,14 +23,14 @@
             node.className = 'ws-nav-entry';
 
             if (entry.children && entry.children.length) {
+                node.classList.add('is-collapsed');
                 const toggle = document.createElement('button');
                 toggle.type = 'button';
                 toggle.className = 'ws-nav-toggle';
                 toggle.setAttribute('aria-label', '展开或收起 ' + entry.title);
-                toggle.textContent = '▾';
+                toggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>';
                 toggle.addEventListener('click', function () {
                     node.classList.toggle('is-collapsed');
-                    toggle.textContent = node.classList.contains('is-collapsed') ? '▸' : '▾';
                 });
                 node.appendChild(toggle);
             } else {
@@ -92,8 +92,6 @@
             const node = parent.parentElement;
             if (node && node.classList.contains('is-collapsed')) {
                 node.classList.remove('is-collapsed');
-                const toggle = node.querySelector('.ws-nav-toggle');
-                if (toggle) toggle.textContent = '▾';
             }
             parent = node && node.parentElement ? node.parentElement.closest('.ws-nav-children') : null;
         }
@@ -118,18 +116,18 @@
         if (!cached) contentEl.innerHTML = skeleton;
 
         try {
-            let data = cached;
-            if (!data) {
-                const res = await fetch('content/' + encodeURIComponent(slug) + '.json');
+            let html = cached;
+            if (!html) {
+                const res = await fetch('content/' + encodeURIComponent(slug) + '.html');
                 if (!res.ok) throw new Error('HTTP ' + res.status);
-                data = await res.json();
-                cache.set(slug, data);
+                html = await res.text();
+                cache.set(slug, html);
             }
             if (seq !== loadSeq) return;
 
-            contentEl.innerHTML = data.html;
-            titleEl.textContent = data.title;
-            document.title = data.title + ' · WSMUD2 攻略';
+            contentEl.innerHTML = html;
+            titleEl.textContent = info ? info.title : slug;
+            document.title = (info ? info.title : slug) + ' · WSMUD2 攻略';
             window.scrollTo({ top: 0, behavior: 'auto' });
         } catch (err) {
             if (seq !== loadSeq) return;
