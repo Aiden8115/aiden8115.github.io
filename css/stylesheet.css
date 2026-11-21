@@ -523,9 +523,7 @@ body.page-ws {
 .ws-layout {
     position: relative;
     z-index: 1;
-    display: flex;
-    align-items: flex-start;
-    gap: 22px;
+    display: block;
     width: 100%;
     max-width: 1620px;
     margin: 0 auto;
@@ -533,9 +531,10 @@ body.page-ws {
 
 /* ---- 侧边栏目录 ---- */
 .ws-sidebar {
-    position: sticky;
+    position: fixed;
     top: 56px;
-    flex: 0 0 400px;
+    left: max(24px, calc(50% - 810px));
+    width: 400px;
     max-height: calc(100vh - 112px);
     display: flex;
     flex-direction: column;
@@ -683,6 +682,7 @@ body.page-ws {
     width: auto;
     min-width: 0;
     max-width: none;
+    margin-left: 422px;
     padding: 40px 48px 56px;
 }
 
@@ -891,15 +891,15 @@ body.page-ws {
 
 @media (max-width: 960px) {
     body.page-ws { padding: 48px 14px 48px; }
-    .ws-layout { flex-direction: column; gap: 16px; }
+    .ws-layout { display: flex; flex-direction: column; gap: 16px; }
     .ws-sidebar {
         position: static;
-        flex: 0 0 auto;
+        left: auto;
         width: 100%;
         max-height: none;
     }
     .ws-nav { max-height: 320px; }
-    .ws-main.panel { padding: 30px 22px 40px; }
+    .ws-main.panel { margin-left: 0; padding: 30px 22px 40px; }
     .ws-doc-title { font-size: 27px; }
     .ws-grid { flex-direction: column; }
 }
