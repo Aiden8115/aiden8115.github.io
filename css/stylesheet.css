@@ -574,6 +574,7 @@ body.page-ws {
 
 .ws-nav {
     flex: 1 1 auto;
+    overflow-x: hidden;
     overflow-y: auto;
     padding-right: 4px;
     display: flex;
@@ -592,6 +593,7 @@ body.page-ws {
     display: block;
     flex: 1 1 0;
     min-width: 0;
+    overflow-wrap: anywhere;
     padding: 8px 10px;
     border-radius: 10px;
     color: var(--dim);
@@ -615,6 +617,7 @@ body.page-ws {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
+    min-width: 0;
 }
 .ws-nav-toggle,
 .ws-nav-spacer {
@@ -648,25 +651,16 @@ body.page-ws {
 .ws-nav-entry.is-collapsed > .ws-nav-toggle svg { transform: rotate(-90deg); }
 .ws-nav-entry.is-collapsed > .ws-nav-children { display: none; }
 .ws-nav-children {
-    flex: 0 0 100%;
+    flex: 0 0 auto;
     width: 100%;
-    margin: 2px 0 0 4px;
-    padding-left: 6px;
+    max-width: 100%;
+    min-width: 0;
+    margin: 2px 0 0 0;
+    padding-left: 10px;
     border-left: 1px dashed rgba(0, 229, 255, 0.16);
 }
 .ws-nav-children .ws-nav-item { font-size: 13px; }
 
-.ws-nav-group { margin-top: 6px; }
-.ws-nav-group > .ws-nav-item { font-weight: 600; color: var(--text); }
-.ws-nav-children {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    margin: 2px 0 0 12px;
-    padding-left: 8px;
-    border-left: 1px dashed rgba(0, 229, 255, 0.18);
-}
-.ws-nav-children .ws-nav-item { font-size: 13px; }
 .ws-nav-loading { padding: 10px; color: var(--dim); font-size: 13px; }
 
 .ws-sidebar .btn {
