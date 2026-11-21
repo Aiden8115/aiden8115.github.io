@@ -4,6 +4,12 @@
     const contentEl = document.getElementById('ws-content');
     const titleEl = document.getElementById('ws-doc-title');
     const eyebrowEl = document.getElementById('ws-eyebrow');
+    const sidebarEl = document.querySelector('.ws-sidebar');
+    const mainEl = document.querySelector('.ws-main');
+    const menuToggle = document.getElementById('ws-menu-toggle');
+
+    const NAV_GAP = 22;
+    let requiredSidebar = 400;
 
     const cache = new Map();
     const meta = new Map(); // slug -> { title, group, link }
@@ -119,6 +125,7 @@
         if (slug === currentSlug) return;
         const seq = ++loadSeq;
         currentSlug = slug;
+        closeMenu();
         setActive(slug);
 
         const info = meta.get(slug);
@@ -150,6 +157,58 @@
         }
     }
 
+    function closeMenu() {
+        document.body.classList.remove('is-menu-open');
+        if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function measureSidebarWidth() {
+        const collapsed = Array.prototype.slice.call(navEl.querySelectorAll('.ws-nav-entry.is-collapsed'));
+        collapsed.forEach(function (n) { n.classList.remove('is-collapsed'); });
+
+        const links = Array.prototype.slice.call(navEl.querySelectorAll('.ws-nav-item'));
+        links.forEach(function (a) { a.style.whiteSpace = 'nowrap'; });
+
+        const navLeft = navEl.getBoundingClientRect().left;
+        let widest = 0;
+        links.forEach(function (a) {
+            const need = (a.getBoundingClientRect().left - navLeft) + a.scrollWidth;
+            if (need > widest) widest = need;
+        });
+
+        links.forEach(function (a) { a.style.whiteSpace = ''; });
+        collapsed.forEach(function (n) { n.classList.add('is-collapsed'); });
+
+        const navStyle = getComputedStyle(navEl);
+        const navExtra = (parseFloat(navStyle.paddingRight) || 0) + 10;
+        const brand = document.querySelector('.ws-brand');
+        const brandWidth = brand ? brand.scrollWidth + 12 : 0;
+        return Math.ceil(Math.max(widest + navExtra, brandWidth) + 34);
+    }
+
+    function applyLayout() {
+        const vw = document.documentElement.clientWidth;
+        const pad = vw <= 960 ? 28 : 48;
+        const available = Math.min(1620, vw - pad);
+        const quarter = (available - NAV_GAP) / 4;
+        const width = Math.max(requiredSidebar, quarter);
+        const content = available - NAV_GAP - width;
+        const bubble = width >= content;
+
+        document.body.classList.toggle('ws-bubble-mode', bubble);
+        closeMenu();
+
+        if (bubble) {
+            sidebarEl.style.width = '';
+            sidebarEl.style.left = '';
+            mainEl.style.marginLeft = '';
+        } else {
+            sidebarEl.style.width = Math.round(width) + 'px';
+            sidebarEl.style.left = Math.round((vw - available) / 2) + 'px';
+            mainEl.style.marginLeft = Math.round(width + NAV_GAP) + 'px';
+        }
+    }
+
     async function init() {
         try {
             const res = await fetch('manifest.json');
@@ -162,6 +221,40 @@
             contentEl.innerHTML = '<div class="ws-error">攻略目录加载失败：' + (err.message || '未知错误') + '</div>';
             return;
         }
+
+        if (document.fonts && document.fonts.ready) {
+            try { await document.fonts.ready; } catch (e) { /* 忽略字体等待失败 */ }
+        }
+        requiredSidebar = measureSidebarWidth();
+        applyLayout();
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const open = document.body.classList.toggle('is-menu-open');
+                menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+        }
+        navEl.addEventListener('click', function (e) {
+            if (e.target.closest('a')) closeMenu();
+        });
+        document.addEventListener('click', function (e) {
+            if (!document.body.classList.contains('ws-bubble-mode')) return;
+            if (!document.body.classList.contains('is-menu-open')) return;
+            if (sidebarEl.contains(e.target) || (menuToggle && menuToggle.contains(e.target))) return;
+            closeMenu();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMenu();
+        });
+        let rafId = 0;
+        window.addEventListener('resize', function () {
+            if (rafId) return;
+            rafId = requestAnimationFrame(function () {
+                rafId = 0;
+                applyLayout();
+            });
+        });
 
         const slug = slugFromHash();
         if (!meta.has(slug)) {

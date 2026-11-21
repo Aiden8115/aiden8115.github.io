@@ -551,6 +551,62 @@ body.page-ws {
     animation: fadeUp 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
+/* ---- 目录过宽时：三横按钮 + 悬浮目录气泡 ---- */
+.ws-menu-toggle {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 95;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    color: var(--text);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 24px rgba(0, 229, 255, 0.12);
+    cursor: pointer;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.ws-menu-toggle:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 28px rgba(0, 229, 255, 0.26);
+    transform: translateY(-1px);
+}
+.ws-menu-toggle svg { width: 22px; height: 22px; }
+body.ws-bubble-mode .ws-menu-toggle { display: inline-flex; }
+
+body.ws-bubble-mode .ws-main.panel {
+    margin-left: 0;
+    padding-top: 72px;
+}
+body.ws-bubble-mode .ws-sidebar {
+    animation: none;
+    position: fixed;
+    top: 76px;
+    left: 18px;
+    width: min(380px, calc(100vw - 36px));
+    max-height: calc(100vh - 96px);
+    z-index: 90;
+    display: none;
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.55),
+        0 0 34px rgba(0, 229, 255, 0.16);
+}
+body.ws-bubble-mode.is-menu-open .ws-sidebar {
+    display: flex;
+    animation: bubbleIn 0.18s ease both;
+}
+@keyframes bubbleIn {
+    from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+}
+
 .ws-brand {
     display: flex;
     align-items: baseline;
@@ -916,15 +972,8 @@ body.page-ws {
 
 @media (max-width: 960px) {
     body.page-ws { padding: 48px 14px 48px; }
-    .ws-layout { display: flex; flex-direction: column; gap: 16px; }
-    .ws-sidebar {
-        position: static;
-        left: auto;
-        width: 100%;
-        max-height: none;
-    }
-    .ws-nav { max-height: 320px; }
-    .ws-main.panel { margin-left: 0; padding: 30px 22px 40px; }
+    .ws-main.panel { padding: 30px 22px 40px; }
+    body.ws-bubble-mode .ws-main.panel { padding-top: 76px; }
     .ws-doc-title { font-size: 27px; }
     .ws-grid { flex-direction: column; }
 }

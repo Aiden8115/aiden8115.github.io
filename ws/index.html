@@ -42,9 +42,18 @@
         <!-- 独立特效层：光标光晕 -->
         <div class="cursor-glow" id="cursor-glow"></div>
 
+        <!-- 悬浮目录开关（窄屏/目录过宽时显示） -->
+        <button class="ws-menu-toggle" id="ws-menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="ws-nav-panel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <line x1="4" y1="7" x2="20" y2="7"/>
+                <line x1="4" y1="12" x2="20" y2="12"/>
+                <line x1="4" y1="17" x2="20" y2="17"/>
+            </svg>
+        </button>
+
         <!-- 主内容：左侧目录 + 右侧宽内容区 -->
         <div class="ws-layout">
-            <aside class="ws-sidebar">
+            <aside class="ws-sidebar" id="ws-nav-panel">
                 <div class="ws-brand">
                     <span class="ws-brand-title">WSMUD2</span>
                     <span class="ws-brand-sub">攻略手册</span>
