@@ -35,6 +35,9 @@
     const sidebarEl = document.querySelector('.ws-sidebar');
     const mainEl = document.querySelector('.ws-main');
     const menuToggle = document.getElementById('ws-menu-toggle');
+    const searchEl = document.getElementById('ws-search');
+    const searchInput = document.getElementById('ws-search-input');
+    const searchResultsEl = document.getElementById('ws-search-results');
 
     const NAV_GAP = 22;
     let requiredSidebar = 400;
@@ -43,6 +46,11 @@
     const meta = new Map(); // slug -> { title, group, link }
     let loadSeq = 0;
     let currentSlug = null;
+
+    /* Ctrl+J 标题搜索 */
+    const searchIndex = [];
+    let searchMatches = [];
+    let searchCursor = -1;
 
     const skeleton = '<div class="ws-skeleton" aria-hidden="true"><span></span><span></span><span></span><span></span></div>';
 
@@ -243,6 +251,105 @@
         }
     }
 
+    function buildSearchIndex(entries, trail) {
+        entries.forEach(function (entry) {
+            searchIndex.push({ title: entry.title, slug: entry.slug, trail: trail });
+            if (entry.children && entry.children.length) {
+                buildSearchIndex(entry.children, trail.concat(entry.title));
+            }
+        });
+    }
+
+    function appendHighlighted(el, text, query) {
+        const lower = text.toLowerCase();
+        let from = 0;
+        let at = lower.indexOf(query, from);
+        while (query && at !== -1) {
+            if (at > from) el.appendChild(document.createTextNode(text.slice(from, at)));
+            const mark = document.createElement('mark');
+            mark.textContent = text.slice(at, at + query.length);
+            el.appendChild(mark);
+            from = at + query.length;
+            at = lower.indexOf(query, from);
+        }
+        if (from < text.length) el.appendChild(document.createTextNode(text.slice(from)));
+    }
+
+    function paintSearchCursor() {
+        const items = searchResultsEl.querySelectorAll('.ws-search-item');
+        items.forEach(function (el, i) {
+            el.classList.toggle('is-selected', i === searchCursor);
+        });
+        if (searchCursor >= 0 && items[searchCursor]) {
+            items[searchCursor].scrollIntoView({ block: 'nearest' });
+        }
+    }
+
+    function renderSearch(query) {
+        const q = query.trim().toLowerCase();
+        searchResultsEl.innerHTML = '';
+        searchCursor = -1;
+        if (!q) {
+            searchMatches = [];
+            const hint = document.createElement('div');
+            hint.className = 'ws-search-empty';
+            hint.textContent = '输入标题关键词开始搜索';
+            searchResultsEl.appendChild(hint);
+            return;
+        }
+        searchMatches = searchIndex.filter(function (item) {
+            return item.title.toLowerCase().indexOf(q) !== -1;
+        }).slice(0, 80);
+        if (!searchMatches.length) {
+            const empty = document.createElement('div');
+            empty.className = 'ws-search-empty';
+            empty.textContent = '未找到标题包含「' + query.trim() + '」的章节';
+            searchResultsEl.appendChild(empty);
+            return;
+        }
+        searchCursor = 0;
+        searchMatches.forEach(function (item) {
+            const link = document.createElement('a');
+            link.className = 'ws-search-item';
+            link.href = '#/' + item.slug;
+            link.setAttribute('role', 'option');
+            const title = document.createElement('div');
+            title.className = 'ws-search-title';
+            appendHighlighted(title, item.title, q);
+            const path = document.createElement('div');
+            path.className = 'ws-search-path';
+            path.textContent = item.trail.length ? item.trail.join(' › ') : '顶级目录';
+            link.appendChild(title);
+            link.appendChild(path);
+            link.addEventListener('click', closeSearch);
+            searchResultsEl.appendChild(link);
+        });
+        paintSearchCursor();
+    }
+
+    function moveSearchCursor(delta) {
+        if (!searchMatches.length) return;
+        searchCursor = (searchCursor + delta + searchMatches.length) % searchMatches.length;
+        paintSearchCursor();
+    }
+
+    function openSearch() {
+        searchEl.classList.add('is-open');
+        searchInput.value = '';
+        renderSearch('');
+        searchInput.focus();
+    }
+
+    function closeSearch() {
+        searchEl.classList.remove('is-open');
+    }
+
+    function openSearchResult(item) {
+        location.hash = '#/' + item.slug;
+        closeSearch();
+    }
+
+
     async function init() {
         try {
             const res = await fetch('manifest.json');
@@ -250,6 +357,7 @@
             const manifest = await res.json();
             document.title = manifest.title + ' · WSMUD2 攻略';
             buildNav(manifest.nav);
+            buildSearchIndex(manifest.nav, []);
         } catch (err) {
             navEl.innerHTML = '<div class="ws-nav-loading">目录加载失败</div>';
             contentEl.innerHTML = '<div class="ws-error">攻略目录加载失败：' + (err.message || '未知错误') + '</div>';
@@ -278,8 +386,48 @@
             if (sidebarEl.contains(e.target) || (menuToggle && menuToggle.contains(e.target))) return;
             closeMenu();
         });
+
+        if (searchEl) {
+            searchInput.addEventListener('input', function () {
+                renderSearch(searchInput.value);
+            });
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    moveSearchCursor(1);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    moveSearchCursor(-1);
+                } else if (e.key === 'Enter') {
+                    if (searchCursor >= 0 && searchMatches[searchCursor]) {
+                        e.preventDefault();
+                        openSearchResult(searchMatches[searchCursor]);
+                    }
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closeSearch();
+                }
+            });
+            searchEl.addEventListener('click', function (e) {
+                if (e.target.hasAttribute('data-search-close')) closeSearch();
+            });
+        }
+
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeMenu();
+            if ((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey && e.key.toLowerCase() === 'j') {
+                e.preventDefault();
+                if (searchEl && searchEl.classList.contains('is-open')) {
+                    searchInput.focus();
+                    searchInput.select();
+                } else {
+                    openSearch();
+                }
+                return;
+            }
+            if (e.key === 'Escape') {
+                closeSearch();
+                closeMenu();
+            }
         });
         let rafId = 0;
         window.addEventListener('resize', function () {

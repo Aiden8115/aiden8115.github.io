@@ -78,6 +78,23 @@
             </main>
         </div>
 
+        <!-- Ctrl+J 标题搜索 -->
+        <div class="ws-search" id="ws-search" role="dialog" aria-modal="true" aria-label="搜索攻略标题">
+            <div class="ws-search-backdrop" data-search-close></div>
+            <div class="ws-search-panel">
+                <div class="ws-search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+                    </svg>
+                    <input id="ws-search-input" type="text" placeholder="搜索攻略标题…" autocomplete="off" spellcheck="false" aria-label="搜索攻略标题">
+                    <kbd>Esc</kbd>
+                </div>
+                <div class="ws-search-results" id="ws-search-results" role="listbox"></div>
+                <p class="ws-search-hint">Ctrl+J 打开 · ↑↓ 选择 · Enter 跳转</p>
+            </div>
+        </div>
+
         <script>
             /* 光标光晕（rAF 缓动跟随） */
             (function () {
