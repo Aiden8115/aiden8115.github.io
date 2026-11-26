@@ -10,7 +10,7 @@ curl -sk -X POST https://127.0.0.1/api/download/mcdownloader \
      --data-binary @/tmp/bw.json -w ' [HTTP=%{http_code}]'
 echo ""
 
-echo "=== 2. 密码对 200 + 响应头 ==="
+echo "=== 2. 密码对 202 + 下载地址 ==="
 curl -sk -D- -o /dev/null -X POST https://127.0.0.1/api/download/mcdownloader \
      -H 'Host: server.aiden8115.cn' \
      -H 'Content-Type: application/json' \

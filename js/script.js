@@ -79,6 +79,16 @@ const pwEyeOn  = document.getElementById('pw-eye-on');
 const pwEyeOff = document.getElementById('pw-eye-off');
 let pwBusy = false;
 
+// 密码框在 HTML 中默认是 type="password"（无 JS 时也安全）。
+// 但部分输入法不会在密码框中记录词频，这里改用 text + CSS 掩码，
+// 让输入法按普通文本框处理；不支持掩码的浏览器仍退回 type="password"。
+const canMaskPwd = !!(window.CSS && CSS.supports && CSS.supports('-webkit-text-security', 'disc'));
+let pwMasked = true;
+if (canMaskPwd) {
+    pwInput.type = 'text';
+    pwInput.classList.add('pw-masked');
+}
+
 function openPasswordModal() {
     pwModal.classList.add('is-open');
     pwModal.setAttribute('aria-hidden', 'false');
@@ -126,10 +136,14 @@ document.addEventListener('keydown', function (e) {
 
 // 密码可见性切换
 document.getElementById('pw-toggle').addEventListener('click', function () {
-    const isText = pwInput.type === 'text';
-    pwInput.type = isText ? 'password' : 'text';
-    pwEyeOn.style.display  = isText ? '' : 'none';
-    pwEyeOff.style.display = isText ? 'none' : '';
+    pwMasked = !pwMasked;
+    if (canMaskPwd) {
+        pwInput.classList.toggle('pw-masked', pwMasked);
+    } else {
+        pwInput.type = pwMasked ? 'password' : 'text';
+    }
+    pwEyeOn.style.display  = pwMasked ? '' : 'none';
+    pwEyeOff.style.display = pwMasked ? 'none' : '';
     pwInput.focus();
 });
 
@@ -161,57 +175,42 @@ async function submitPassword() {
     hideError();
     setSubmitBusy(true);
 
-    // 单次 fetch form-urlencoded POST：
-    //   密码错 → 403 + JSON   （服务器 0.14s 回）
-    //   密码对 → 200 + 文件流 （浏览器显示下载进度条）
-    // 用 fetch 不用 form.submit()，避免跨域顶层导航触发 ERR_CONNECTION_RESET
+    // 先用 JSON POST 快速校验密码（服务器 0.1s 级返回），
+    // 拿到带令牌的下载地址后交给浏览器原生下载：
+    // 立刻开始、有进度条、不占页面内存，也不用等整个文件缓冲完
     try {
         const res = await fetch(API_MC_DOWNLOAD, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'password=' + encodeURIComponent(pwd),
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: pwd }),
             mode: 'cors'
         });
 
-        // 错误：读 JSON 显示
+        let data = null;
+        try { data = await res.json(); } catch (e) {}
+
         if (res.status === 403) {
             showError('密码错误，请重试');
             setSubmitBusy(false);
             return;
         }
-        if (res.status === 404) {
-            showError('服务器文件未找到');
-            setSubmitBusy(false);
-            return;
-        }
-        if (!res.ok) {
-            var errText = '';
-            try { errText = (await res.json()).message || ''; } catch (e) {}
-            showError(errText || ('服务器错误（HTTP ' + res.status + '）'));
+        if (!res.ok || !data || !data.url) {
+            showError((data && data.message) || ('服务器错误（HTTP ' + res.status + '）'));
             setSubmitBusy(false);
             return;
         }
 
-        // 成功：关弹窗 → 从 Content-Disposition 取文件名 → blob 触发下载
+        // 成功：关弹窗 → 触发浏览器原生下载
         closePasswordModal(true);
         setSubmitBusy(false);
         showToast('开始下载 BestMCLauncher...', true);
 
-        var cd = res.headers.get('Content-Disposition') || '';
-        var fileName = 'BestMCLauncher-Setup-1.0.0.exe';
-        var m = cd.match(/filename\*?=(?:UTF-8'')?"?([^";]+)"?/i);
-        if (m && m[1]) fileName = decodeURIComponent(m[1].trim());
-
-        var blob = await res.blob();
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = fileName;
+        const a = document.createElement('a');
+        a.href = data.url;
         a.style.display = 'none';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
     } catch (err) {
         if (err instanceof TypeError) {
             showError('无法连接服务器（CORS 或网络问题）');

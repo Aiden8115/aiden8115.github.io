@@ -15,10 +15,19 @@ curl -sk -D- -X POST https://127.0.0.1/api/download/mcdownloader \
      -d '{"password":"净念禅宗"}' 2>&1 | head -15
 echo ""
 
-echo '=== 3. form POST 密码对 → 200 + 文件流 ==='
-curl -sk -D- -o /dev/null -X POST https://127.0.0.1/api/download/mcdownloader \
+echo '=== 3. 密码对 → 取令牌 → GET 下载 → 200 + 文件头 ==='
+TOKEN=$(curl -sk -X POST https://127.0.0.1/api/download/mcdownloader \
      -H 'Host: server.aiden8115.cn' \
-     -d 'password=净念禅宗' 2>&1 | head -15
+     -H 'Content-Type: application/json' \
+     -d '{"password":"净念禅宗"}' | sed -n 's/.*"token=\([^"]*\)".*/\1/p')
+curl -sk -D- -o /dev/null "https://127.0.0.1/api/download/mcdownloader?token=$TOKEN" \
+     -H 'Host: server.aiden8115.cn' 2>&1 | head -15
+echo ""
+
+echo '=== 3b. 无令牌 GET → 403 ==='
+curl -sk "https://127.0.0.1/api/download/mcdownloader" \
+     -H 'Host: server.aiden8115.cn' -w ' [HTTP=%{http_code}]'
+echo ""
 
 echo '=== 4. 外部: JSON 密码错 ==='
 curl.exe -s -X POST https://server.aiden8115.cn/api/download/mcdownloader ^

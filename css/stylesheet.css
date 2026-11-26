@@ -425,6 +425,11 @@ a:hover {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.18);
 }
+/* 用 text 输入框 + CSS 掩码代替 type="password"，
+   让输入法正常记录词频（不支持该属性的浏览器会退回 password 类型） */
+.pw-input.pw-masked {
+    -webkit-text-security: disc;
+}
 .pw-input.is-error {
     border-color: #ef4444;
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.22);
