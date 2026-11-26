@@ -1,8 +1,9 @@
 <?php
 /**
  * BestMCLauncher 下载 API
- * - POST JSON {password}  → 校验密码，返回 202 + 带令牌的原生下载地址
- * - GET  ?token=...       → 校验令牌，流式下发文件（浏览器原生下载，带进度条）
+ * - POST JSON {password}       → 校验密码，返回 202 + 带令牌的原生下载地址
+ * - GET  ?token=...            → 校验令牌，流式下发文件（浏览器原生下载，带进度条）
+ * - POST form-urlencoded       → 兼容旧版前端，校验密码后直接流式下发
  * 部署位置: /var/www/aiden8115/api/download/mcdownloader.php
  */
 
@@ -112,29 +113,40 @@ if ($method !== 'POST') {
     json_response(405, 'Method Not Allowed');
 }
 
-// —— POST 必须为 JSON ——
-if (stripos($_SERVER['CONTENT_TYPE'] ?? '', 'application/json') === false) {
-    json_response(415, 'JSON body required');
+// —— POST 必须为 JSON 或 form-urlencoded ——
+$ct = $_SERVER['CONTENT_TYPE'] ?? '';
+
+// JSON：校验密码后返回带令牌的原生下载地址
+if (stripos($ct, 'application/json') !== false) {
+    $body = json_decode(file_get_contents('php://input'), true);
+    if (!is_array($body)) {
+        json_response(400, 'Invalid JSON body');
+    }
+
+    $pwd = trim((string)($body['password'] ?? ''));
+    if ($pwd === '') {
+        json_response(400, 'Password is required');
+    }
+
+    // —— timing-safe 密码校验 ——
+    if (!hash_equals(PASSWORD, $pwd)) {
+        json_response(403, 'Incorrect password');
+    }
+
+    // —— 密码正确：下发带令牌的下载地址 ——
+    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $host   = $_SERVER['HTTP_HOST'] ?? 'server.aiden8115.cn';
+    $url    = $scheme . '://' . $host . '/api/download/mcdownloader?token=' . urlencode(make_token());
+
+    json_response(202, 'Password accepted, ready to download', ['url' => $url]);
 }
 
-$body = json_decode(file_get_contents('php://input'), true);
-if (!is_array($body)) {
-    json_response(400, 'Invalid JSON body');
-}
-
-$pwd = trim((string)($body['password'] ?? ''));
+// 表单 POST：兼容旧版前端，校验密码后直接流式下载
+$pwd = trim((string)($_POST['password'] ?? ''));
 if ($pwd === '') {
     json_response(400, 'Password is required');
 }
-
-// —— timing-safe 密码校验 ——
 if (!hash_equals(PASSWORD, $pwd)) {
     json_response(403, 'Incorrect password');
 }
-
-// —— 密码正确：下发带令牌的下载地址 ——
-$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$host   = $_SERVER['HTTP_HOST'] ?? 'server.aiden8115.cn';
-$url    = $scheme . '://' . $host . '/api/download/mcdownloader?token=' . urlencode(make_token());
-
-json_response(202, 'Password accepted, ready to download', ['url' => $url]);
+stream_download();
