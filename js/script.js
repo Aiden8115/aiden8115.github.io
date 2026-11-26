@@ -164,6 +164,34 @@ function setSubmitBusy(busy) {
     pwSpinner.hidden = !busy;
 }
 
+// 密码校验请求：
+//  - 用 text/plain 发送 JSON，属于 CORS 简单请求，不触发 OPTIONS 预检
+//  - 网络抖动 / 连接被重置时自动重试（最多 3 次）
+async function requestPasswordCheck(pwd) {
+    let lastErr;
+    for (let i = 0; i < 3; i++) {
+        const ctrl = new AbortController();
+        const timer = setTimeout(function () { ctrl.abort(); }, 10000);
+        try {
+            return await fetch(API_MC_DOWNLOAD, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify({ password: pwd }),
+                mode: 'cors',
+                signal: ctrl.signal
+            });
+        } catch (err) {
+            lastErr = err;
+            if (i < 2) {
+                await new Promise(function (r) { setTimeout(r, 500 * (i + 1)); });
+            }
+        } finally {
+            clearTimeout(timer);
+        }
+    }
+    throw lastErr;
+}
+
 async function submitPassword() {
     if (pwBusy) return;
     const pwd = pwInput.value.trim();
@@ -179,12 +207,7 @@ async function submitPassword() {
     // 拿到带令牌的下载地址后交给浏览器原生下载：
     // 立刻开始、有进度条、不占页面内存，也不用等整个文件缓冲完
     try {
-        const res = await fetch(API_MC_DOWNLOAD, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ password: pwd }),
-            mode: 'cors'
-        });
+        const res = await requestPasswordCheck(pwd);
 
         let data = null;
         try { data = await res.json(); } catch (e) {}
@@ -212,8 +235,10 @@ async function submitPassword() {
         a.click();
         document.body.removeChild(a);
     } catch (err) {
-        if (err instanceof TypeError) {
-            showError('无法连接服务器（CORS 或网络问题）');
+        if (err && err.name === 'AbortError') {
+            showError('请求超时，请重试');
+        } else if (err instanceof TypeError) {
+            showError('无法连接服务器，请检查网络后重试');
         } else {
             showError('请求失败：' + (err.message || '未知错误'));
         }

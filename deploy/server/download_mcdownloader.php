@@ -4,6 +4,7 @@
  * - POST JSON {password}       → 校验密码，返回 202 + 带令牌的原生下载地址
  * - GET  ?token=...            → 校验令牌，流式下发文件（浏览器原生下载，带进度条）
  * - POST form-urlencoded       → 兼容旧版前端，校验密码后直接流式下发
+ * 注：新版前端用 text/plain 发送 JSON，避免触发 CORS 预检
  * 部署位置: /var/www/aiden8115/api/download/mcdownloader.php
  */
 
@@ -23,6 +24,7 @@ $hasOrigin = ($origin !== '');
 
 function cors_out(): void {
     global $hasOrigin, $origin;
+    header('Vary: Origin');
     if ($hasOrigin) {
         header("Access-Control-Allow-Origin: $origin");
         header('Access-Control-Allow-Credentials: true');
@@ -113,40 +115,36 @@ if ($method !== 'POST') {
     json_response(405, 'Method Not Allowed');
 }
 
-// —— POST 必须为 JSON 或 form-urlencoded ——
-$ct = $_SERVER['CONTENT_TYPE'] ?? '';
+// —— 支持两种 POST ——
+// 1) 表单 POST（旧版前端）：密码在 $_POST，校验后直接流式下载
+// 2) JSON body（新版前端）：为避免 CORS 预检，前端用 text/plain 发送，
+//    因此这里不再按 Content-Type 判断，而是尝试解析 JSON
+$pwd    = trim((string)($_POST['password'] ?? ''));
+$isForm = ($pwd !== '');
 
-// JSON：校验密码后返回带令牌的原生下载地址
-if (stripos($ct, 'application/json') !== false) {
-    $body = json_decode(file_get_contents('php://input'), true);
-    if (!is_array($body)) {
-        json_response(400, 'Invalid JSON body');
+if (!$isForm) {
+    $body = json_decode((string)file_get_contents('php://input'), true);
+    if (is_array($body)) {
+        $pwd = trim((string)($body['password'] ?? ''));
     }
-
-    $pwd = trim((string)($body['password'] ?? ''));
-    if ($pwd === '') {
-        json_response(400, 'Password is required');
-    }
-
-    // —— timing-safe 密码校验 ——
-    if (!hash_equals(PASSWORD, $pwd)) {
-        json_response(403, 'Incorrect password');
-    }
-
-    // —— 密码正确：下发带令牌的下载地址 ——
-    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-    $host   = $_SERVER['HTTP_HOST'] ?? 'server.aiden8115.cn';
-    $url    = $scheme . '://' . $host . '/api/download/mcdownloader?token=' . urlencode(make_token());
-
-    json_response(202, 'Password accepted, ready to download', ['url' => $url]);
 }
 
-// 表单 POST：兼容旧版前端，校验密码后直接流式下载
-$pwd = trim((string)($_POST['password'] ?? ''));
 if ($pwd === '') {
     json_response(400, 'Password is required');
 }
+
+// —— timing-safe 密码校验 ——
 if (!hash_equals(PASSWORD, $pwd)) {
     json_response(403, 'Incorrect password');
 }
-stream_download();
+
+if ($isForm) {
+    stream_download();
+}
+
+// —— 密码正确：下发带令牌的下载地址 ——
+$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host   = $_SERVER['HTTP_HOST'] ?? 'server.aiden8115.cn';
+$url    = $scheme . '://' . $host . '/api/download/mcdownloader?token=' . urlencode(make_token());
+
+json_response(202, 'Password accepted, ready to download', ['url' => $url]);
