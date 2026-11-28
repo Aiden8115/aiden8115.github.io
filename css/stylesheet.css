@@ -56,7 +56,6 @@ body {
     transform: translate(-50%, -50%);
     z-index: 0;
     will-change: transform;
-    mix-blend-mode: screen;
 }
 
 .bg-deco {
@@ -67,19 +66,7 @@ body {
     opacity: 0.45;
 }
 .bg-deco line { stroke: rgba(0, 229, 255, 0.12); stroke-width: 1; }
-.bg-deco .d1 { animation: floatX 22s ease-in-out infinite; }
-.bg-deco .d2 { animation: floatY 18s ease-in-out infinite reverse; }
-.bg-deco .d3 { animation: floatX 28s ease-in-out infinite; }
-.bg-deco .d4 { animation: floatY 14s ease-in-out infinite; }
-
-@keyframes floatX {
-    0%,100% { transform: translateX(-24px); }
-    50%     { transform: translateX(24px); }
-}
-@keyframes floatY {
-    0%,100% { transform: translateY(-18px); }
-    50%     { transform: translateY(18px); }
-}
+/* 背景装饰保持静止：此前 4 组 float 动画会让整层背景持续重绘，低配设备明显掉帧 */
 
 /* ===== 主面板 ===== */
 .panel {
@@ -88,9 +75,7 @@ body {
     width: 100%;
     max-width: 900px;
     padding: 42px 48px 46px;
-    background: var(--panel);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(8, 16, 30, 0.86);
     border: 1px solid var(--border);
     border-radius: 22px;
     box-shadow:
@@ -118,19 +103,14 @@ body {
     background-clip: text;
     color: transparent;
     opacity: 0;
-    /* 入场 0.05s 延迟；入场完 0.95s 后 titleSlide + titlePulse 同时启动无限循环 */
+    /* 入场 0.05s 延迟；入场完 0.95s 后启动标题流光 */
     animation: panelIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.05s forwards,
-               titleSlide 5s linear infinite 0.95s,
-               titlePulse 3.2s ease-in-out infinite 0.95s;
+               titleSlide 5s linear infinite 0.95s;
 }
 
 @keyframes titleSlide {
     0%   { background-position: 0% 50%; }
     100% { background-position: 200% 50%; }
-}
-@keyframes titlePulse {
-    0%,100% { filter: drop-shadow(0 0 4px rgba(0,229,255,0.35)); }
-    50%     { filter: drop-shadow(0 0 14px rgba(0,229,255,0.70)); }
 }
 
 .sub {
