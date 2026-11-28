@@ -357,7 +357,7 @@ async function submitPassword() {
     }
 }
 
-/* ========== 光标光晕（rAF 缓动跟随，静止后自动停止渲染） ========== */
+/* ========== 光标光晕（rAF 缓动跟随） ========== */
 (function () {
     const glow = document.getElementById('cursor-glow');
     if (!glow) return;
@@ -365,33 +365,17 @@ async function submitPassword() {
     let targetX = window.innerWidth / 2;
     let targetY = window.innerHeight / 2;
     let curX = targetX, curY = targetY;
-    let rafId = 0;
-
-    function render() {
-        glow.style.transform = 'translate3d(' + curX + 'px,' + curY + 'px,0) translate(-50%,-50%)';
-    }
-
-    function tick() {
-        curX += (targetX - curX) * 0.14;
-        curY += (targetY - curY) * 0.14;
-        render();
-        // 追上目标后停下，避免空闲时仍持续占用合成线程
-        if (Math.abs(targetX - curX) < 0.5 && Math.abs(targetY - curY) < 0.5) {
-            rafId = 0;
-            return;
-        }
-        rafId = requestAnimationFrame(tick);
-    }
-
-    function start() {
-        if (!rafId) rafId = requestAnimationFrame(tick);
-    }
 
     document.addEventListener('mousemove', function (e) {
         targetX = e.clientX;
         targetY = e.clientY;
-        start();
     });
 
-    render();
+    function tick() {
+        curX += (targetX - curX) * 0.14;
+        curY += (targetY - curY) * 0.14;
+        glow.style.transform = 'translate(' + curX + 'px, ' + curY + 'px) translate(-50%, -50%)';
+        requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
 })();
