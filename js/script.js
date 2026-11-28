@@ -77,7 +77,14 @@ const pwLabel  = pwSubmit.querySelector('.pw-btn-label');
 const pwSpinner = document.getElementById('pw-spinner');
 const pwEyeOn  = document.getElementById('pw-eye-on');
 const pwEyeOff = document.getElementById('pw-eye-off');
+const pwProgress     = document.getElementById('pw-progress');
+const pwProgressFill = document.getElementById('pw-progress-fill');
+const pwProgressText = document.getElementById('pw-progress-text');
+const pwProgressPct  = document.getElementById('pw-progress-pct');
+const pwDesc  = document.querySelector('.pw-desc');
+const pwField = document.querySelector('.pw-field');
 let pwBusy = false;
+let pwAbort = null;
 
 // 密码框在 HTML 中默认是 type="password"（无 JS 时也安全）。
 // 但部分输入法不会在密码框中记录词频，这里改用 text + CSS 掩码，
@@ -94,15 +101,63 @@ function openPasswordModal() {
     pwModal.setAttribute('aria-hidden', 'false');
     pwInput.value = '';
     hideError();
+    hideProgress();
+    setSubmitBusy(false);
     setTimeout(function () { pwInput.focus(); }, 60);
 }
 
 function closePasswordModal(force) {
-    // force=true 时绕过 pwBusy 检查（提交成功后强制关闭）
-    if (!force && pwBusy) return;
+    // 下载中关闭弹窗 = 取消下载
+    if (pwAbort) {
+        pwAbort.abort();
+        pwAbort = null;
+    } else if (!force && pwBusy) {
+        return;
+    }
+    setSubmitBusy(false);
+    hideProgress();
     pwModal.classList.remove('is-open');
     pwModal.setAttribute('aria-hidden', 'true');
     hideError();
+}
+
+// —— 进度显示 ——
+function showProgressView() {
+    hideError();
+    pwDesc.hidden = true;
+    pwField.hidden = true;
+    pwProgress.hidden = false;
+    pwProgress.classList.remove('is-indeterminate');
+    pwProgressFill.style.width = '0%';
+    pwProgressText.textContent = '正在连接下载服务器…';
+    pwProgressPct.textContent = '';
+}
+
+function renderProgress(received, total) {
+    if (total > 0) {
+        const pct = Math.min(100, Math.round(received / total * 100));
+        pwProgress.classList.remove('is-indeterminate');
+        pwProgressFill.style.width = pct + '%';
+        pwProgressPct.textContent = pct + '%';
+        pwProgressText.textContent = '已下载 ' + formatMB(received) + ' / ' + formatMB(total);
+    } else {
+        // 服务器未给出总大小时用滚动条动画表示进度
+        pwProgress.classList.add('is-indeterminate');
+        pwProgressPct.textContent = '';
+        pwProgressText.textContent = '已下载 ' + formatMB(received);
+    }
+}
+
+function hideProgress() {
+    pwProgress.hidden = true;
+    pwProgress.classList.remove('is-indeterminate');
+    pwDesc.hidden = false;
+    pwField.hidden = false;
+    pwProgressFill.style.width = '0%';
+}
+
+function formatMB(bytes) {
+    return (bytes / 1048576).toFixed(1) + ' MB';
 }
 
 function showError(msg) {
@@ -192,6 +247,52 @@ async function requestPasswordCheck(pwd) {
     throw lastErr;
 }
 
+// 页面内流式下载：全程不跳转，边下边显示进度；
+// 30 秒收不到任何数据则视为连接卡死，自动中断
+async function downloadFile(url) {
+    const ctrl = new AbortController();
+    pwAbort = ctrl;
+    let idleTimer = null;
+    const resetIdle = function () {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(function () { ctrl.abort(); }, 30000);
+    };
+    resetIdle();
+    try {
+        const res = await fetch(url, { mode: 'cors', signal: ctrl.signal });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const total = Number(res.headers.get('Content-Length')) || 0;
+        const reader = res.body.getReader();
+        const chunks = [];
+        let received = 0;
+        renderProgress(received, total);
+        for (;;) {
+            const step = await reader.read();
+            if (step.done) break;
+            chunks.push(step.value);
+            received += step.value.length;
+            renderProgress(received, total);
+            resetIdle();
+        }
+        return new Blob(chunks, { type: 'application/octet-stream' });
+    } finally {
+        clearTimeout(idleTimer);
+        pwAbort = null;
+    }
+}
+
+function saveBlob(blob) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'BestMCLauncher-Setup-1.0.0.exe';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+}
+
 async function submitPassword() {
     if (pwBusy) return;
     const pwd = pwInput.value.trim();
@@ -203,12 +304,10 @@ async function submitPassword() {
     hideError();
     setSubmitBusy(true);
 
-    // 先用 JSON POST 快速校验密码（服务器 0.1s 级返回），
-    // 拿到带令牌的下载地址后交给浏览器原生下载：
-    // 立刻开始、有进度条、不占页面内存，也不用等整个文件缓冲完
+    // 第一步：校验密码，拿到带令牌的下载地址
+    let url;
     try {
         const res = await requestPasswordCheck(pwd);
-
         let data = null;
         try { data = await res.json(); } catch (e) {}
 
@@ -222,18 +321,7 @@ async function submitPassword() {
             setSubmitBusy(false);
             return;
         }
-
-        // 成功：关弹窗 → 触发浏览器原生下载
-        closePasswordModal(true);
-        setSubmitBusy(false);
-        showToast('开始下载 BestMCLauncher...', true);
-
-        const a = document.createElement('a');
-        a.href = data.url;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        url = data.url;
     } catch (err) {
         if (err && err.name === 'AbortError') {
             showError('请求超时，请重试');
@@ -242,7 +330,29 @@ async function submitPassword() {
         } else {
             showError('请求失败：' + (err.message || '未知错误'));
         }
-        console.error('[BestMCLauncher] fetch failed:', err);
+        console.error('[BestMCLauncher] auth failed:', err);
+        setSubmitBusy(false);
+        return;
+    }
+
+    // 第二步：在弹窗内流式下载，完成后保存（不跳转、不出现空白页）
+    showProgressView();
+    try {
+        const blob = await downloadFile(url);
+        saveBlob(blob);
+        closePasswordModal(true);
+        showToast('下载完成，正在保存文件...', true);
+    } catch (err) {
+        if (!pwModal.classList.contains('is-open')) return; // 用户已取消
+        hideProgress();
+        if (err && err.name === 'AbortError') {
+            showError('下载超时，请重试');
+        } else if (err instanceof TypeError) {
+            showError('无法连接下载服务器，请检查网络后重试');
+        } else {
+            showError('下载失败：' + (err.message || '未知错误'));
+        }
+        console.error('[BestMCLauncher] download failed:', err);
         setSubmitBusy(false);
     }
 }
